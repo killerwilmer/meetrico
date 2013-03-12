@@ -1,0 +1,40 @@
+<%= h  "Tickets de #{@activity.name}" %>
+<%= will_paginate @tickets %>
+<table class="table tablesorter" id="ticket-table">
+  <thead>
+    <tr>
+      
+      
+      <th>Fecha Registro</th>
+      <th>Comprador</th>
+      <th>Precio</th>
+      <th>Estado</th>
+      <th colspan="4">Operaciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for ticket in @tickets %>
+      <tr>
+        
+        
+        <td><%= ticket.created_at.strftime('%d %b de %Y - %I:%M%p') rescue '' %></td>
+        <td><%= link_to ticket.user.name.to_s, user_url(ticket.user) rescue '' %></td>
+        <td><%= ticket.activity.price.to_s rescue '' %></td>
+        <td><%= ticket.state.name.to_s rescue '' %></td>
+        
+        
+        <td><%= link_to "Ver", activity_reservation_ticket_url(ticket.activity, @reservation, ticket) %></td>
+        <td><%= link_to "Editar", edit_activity_reservation_ticket_url(ticket.activity, @reservation, ticket) %></td>
+        <td><%= #link_to "Eliminar", (ticket.activity, ticket), :confirm => 'Are you sure?', :method => :delete 
+        %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @tickets %>
+
+<script>
+  $(document).ready(function() {
+    $("#ticket-table").tablesorter();
+  });
+</script>

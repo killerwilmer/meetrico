@@ -1,0 +1,50 @@
+<h1>Lista de usuarios</h1>
+<%= will_paginate @reservations %>
+<br /><br /><br />
+<table class="table tablesorter" id="users-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Espacios</th>
+
+      <th>Perfil</th>
+      <th colspan="4">Operaciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <% tipo_usuario = '' %>
+      <% actualizar_perfil_a = '' %>
+      <% css_fila = 'fila_usuario' %>
+      <%  unless user.try(:owner?)
+        tipo_usuario = 'Usuario'
+        actualizar_perfil_a = 'propietario'
+      else
+        tipo_usuario = 'Propietario'
+        css_fila = 'fila_propietario'
+        actualizar_perfil_a = 'usuario'
+      end %>
+      <tr >
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to user.coworking_spaces.length.to_s, :controller => :coworking_spaces, :action => :list, :owner_id => user.id.to_s %></td>
+        <td ><span class="<%= css_fila %>" ><%= tipo_usuario %></span></td>
+        <td><%= link_to 'Volver '+actualizar_perfil_a, :controller => :users, :action => :set_profile, :type => actualizar_perfil_a, :id => user %></td>
+        <td><%= link_to 'Ver', user %></td>
+        <td><%= link_to 'Editar', edit_user_path(user) %></td>
+        <td><%= link_to 'Eliminar', user, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @reservations %>
+<br /><br /><br />
+
+<%= link_to 'New user', new_user_registration_path %>
+<script>
+  $(document).ready(function() {
+    $("#users-table").tablesorter();
+  });
+</script>

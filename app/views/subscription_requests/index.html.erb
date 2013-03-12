@@ -1,0 +1,27 @@
+<h1>Listing subscription_requests</h1>
+
+<table class="table">
+  <tr>
+    <th>phone</th>
+    <th>description</th>
+    <th>usuario</th>
+    <th>ciudad</th>
+    <th colspan="3"></th>
+  </tr>
+
+<% @subscription_requests.each do |sr| %>
+  <tr>
+    <td><%= sr.phone %></td>
+    <td><%= sr.description %></td>
+    <td><%= sr.user.name %></td>
+    <td><%= sr.city.name %></td>
+    <td><%= link_to 'Show', sr %></td>
+    <td><%= link_to 'Edit', edit_subscription_request_path(sr) %></td>
+    <td><%= link_to 'Destroy', sr, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Request', new_subscription_request_path %>

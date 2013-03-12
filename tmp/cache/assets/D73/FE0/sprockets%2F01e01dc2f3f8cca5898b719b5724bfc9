@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606785.968232:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%73450c003f919166ef583da16182221fI"logical_path;
+FI"cell16.png;
+TI"pathname;
+FI"'$root/app/assets/images/cell16.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"378;
+FI"digest;
+F"%4ada2e9018249dd2b660240ddab1f67eI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

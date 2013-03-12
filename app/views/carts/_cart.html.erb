@@ -1,0 +1,36 @@
+<table id="line_items" class="">
+  <tr>
+    <th>Item</th>
+    <th>Cant</th>
+    <th class="price">Precio Unidad</th>
+    <th class="price">Total</th>
+    <th class="price">Inicio Reserva</th>
+    <th class="price">Final Reserva</th>
+  </tr>
+  <% for line_item in cart.line_items %>
+    <%
+    table = line_item.table
+    reservation = table.reservations.last
+
+  %>
+
+    <tr class="<%= cycle :odd, :even %>">
+      <td><%=h line_item.table.coworking_space.name %>: Item: <%=h line_item.table.id.to_s %></td>
+      <td class="qty"><%= line_item.quantity %></td>
+      <td class="price"><%= number_to_currency(line_item.unit_price) %></td>
+      <td class="price"><%= number_to_currency(line_item.full_price) %></td>
+      <td class="price"><%= reservation.start_time rescue ''%></td>
+      <td class="price"><%= reservation.end_time rescue '' %></td>
+
+      <% if not edit.nil? and edit == true%>
+        <td class="price"><%= link_to 'remove', :controller => :carts, :action => :remove_item, :id => line_item.table.id.to_s %></td>
+      <% end %>
+
+    </tr>
+  <% end %>
+  <tr>
+    <td class="total price" colspan="4">
+      Total: <%= number_to_currency cart.total_price %>
+    </td>
+  </tr>
+</table>

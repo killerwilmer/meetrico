@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343960850.4401212:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%a0e6646649d5cb163fd9b8c2f5c0e45cI"logical_path;
+FI" gallery_view/img-loader.gif;
+TI"pathname;
+FI"=$root/app/assets/stylesheets/gallery_view/img-loader.gif;
+FI"content_type;
+FI"image/gif;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"723;
+FI"digest;
+F"%0bd26d8f426aa7d91177cbd1b46703bcI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

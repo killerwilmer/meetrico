@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343960849.403819:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%833afc7b1fd8595cdbcf2f2191be694fI"logical_path;
+FI"'gallery_view/themes/light/prev.png;
+TI"pathname;
+FI"D$root/app/assets/stylesheets/gallery_view/themes/light/prev.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"377;
+FI"digest;
+F"%34a4bc2c5dbd016db561c209f82d1634I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606786.0869231:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%84edbb1bdeba613a1d9ed92ec5334292I"logical_path;
+FI"welcome/logo_aje.png;
+TI"pathname;
+FI"1$root/app/assets/images/welcome/logo_aje.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"	3509;
+FI"digest;
+F"%f6fe2ab7b82cc7a0d75dd061d314cf39I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

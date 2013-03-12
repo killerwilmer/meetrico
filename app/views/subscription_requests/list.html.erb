@@ -1,0 +1,33 @@
+<h1>Listing subscription_requests  </h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Green</th>
+    <th>Yellow</th>
+    <th>Red</th>
+    <th>Tables</th>
+    <th>Booked</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @subscription_requests.each do |subscription_request| %>
+  <tr>
+    <td><%= subscription_request.name %></td>
+    <td><%= subscription_request.green %></td>
+    <td><%= subscription_request.yellow %></td>
+    <td><%= subscription_request.red %></td>
+    <td><%= subscription_request.tables.length.to_s %></td>
+    <td><%= (subscription_request.tables.where(:booked => true)).length.to_s %></td>
+    <td><%= link_to 'Show', subscription_request %></td>
+    <td><%= link_to 'Edit', edit_subscription_request_path(subscription_request) %></td>
+    <td><%= link_to 'Destroy', subscription_request, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

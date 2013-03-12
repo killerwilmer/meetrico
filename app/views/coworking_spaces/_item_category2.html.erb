@@ -1,0 +1,39 @@
+<div class="category_wrapper" >
+  <% if category %>
+  <div id="thermometer_icon" class="green"></div>
+  <div class="item-category-title">
+    <%= category.try(:name).try(:capitalize) %>
+  </div>
+  
+
+  <div class="left-side-wrapper">    
+
+    <% if category.image_url and category.image_url != "" %>
+      <img src="<%= category.image_url %>" class="ic_cws_icon"/>
+
+    <% else %>
+      <img src="/images/logo3.png" width="150"/>
+    <% end %>
+  </div>
+  <div class="right-side-wrapper">
+    <div class="num-item-by-category">
+      <% if category.tables_left_by_coworking_space('resource', coworking_space) <= 0  %>
+        0
+      <% else %>
+        <%= category.tables_left_by_coworking_space('resource', coworking_space) %>
+      <% end %>
+    </div>
+    <div>
+      items disponibles
+    </div>
+    <div class="item-category-price <%= item_category_thermometer_css(category, coworking_space) %>">
+      Precio:
+<%= category.price(coworking_space)%> &#36;
+    </div>
+    <div class="wrapper_view_category_link">
+      <button data-url="<%= list_coworking_space_item_category_path(coworking_space, category) %>">ver productos</button>
+    </div>
+  </div>
+<% else %>
+<% end %>
+</div>

@@ -1,0 +1,2 @@
+module ActivityReservationsHelper
+end

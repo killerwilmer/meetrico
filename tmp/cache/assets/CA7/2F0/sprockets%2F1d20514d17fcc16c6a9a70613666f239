@@ -1,0 +1,49 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1359003546.5433621:@value{	I"length:EFi¾I"digest;
+F"%a02ad786773ae7e4b316501f4cb0915dI"source;
+FI"¾/* line 1, ../../../app/assets/stylesheets/welcome/about.css.scss.erb */
+.h1_spacer {
+  text-transform: uppercase;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+/* line 5, ../../../app/assets/stylesheets/welcome/about.css.scss.erb */
+.h1_spacer h1 {
+  color: #5f5f5f;
+}
+
+/* line 10, ../../../app/assets/stylesheets/welcome/about.css.scss.erb */
+.spacer {
+  height: 1em;
+}
+
+/* line 14, ../../../app/assets/stylesheets/welcome/about.css.scss.erb */
+.box2 {
+  padding: 2%;
+  text-align: justify;
+  border: 1px solid #AAA;
+  background: url("/assets/welcome/bg_spaces.png") repeat;
+  -moz-box-shadow: 1px 1px 5px #AAA;
+  -webkit-box-shadow: 1px 1px 5px #AAA;
+  box-shadow: 1px 1px 5px #AAA;
+}
+/* line 22, ../../../app/assets/stylesheets/welcome/about.css.scss.erb */
+.box2 a:not(.image) {
+  font: 1.75em/1em "OswaldBook", "Helvetica", "sans-serif";
+  display: inline-block;
+  margin: 0.5em 0;
+}
+/* line 28, ../../../app/assets/stylesheets/welcome/about.css.scss.erb */
+.box2 img {
+  width: 100%;
+}
+/* line 31, ../../../app/assets/stylesheets/welcome/about.css.scss.erb */
+.box2 h2 {
+  text-transform: uppercase;
+}
+/* line 34, ../../../app/assets/stylesheets/welcome/about.css.scss.erb */
+.box2 li {
+  list-style: disc;
+}
+;
+FI"_version;
+F"%b533cb46c25e355e527bd1c67f20ab34

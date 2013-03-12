@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343960849.5766668:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%4cb7a141603719b1e55b94f1740191afI"logical_path;
+FI"+gallery_view/themes/light/play-big.png;
+TI"pathname;
+FI"H$root/app/assets/stylesheets/gallery_view/themes/light/play-big.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"378;
+FI"digest;
+F"%a592577236702836b0258cf339635eaaI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

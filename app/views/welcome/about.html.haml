@@ -1,0 +1,26 @@
+- content_for :stylesheets do
+  = stylesheet_link_tag 'welcome/about'
+.container-fluid
+  .h1_spacer
+    %h1= t(:conoce_meetrico)
+
+= render 'welcome/about/why'
+.spacer
+= render 'welcome/about/who'
+.spacer
+= render 'welcome/about/what'
+.spacer
+= render 'welcome/about/join_us'
+
+-#.container-fluid
+  .row-fluid
+    .span6
+      %h2= t(:comparte_espacio).upcase
+      %p Ofrece tu espacio en Meetrico y recibe ingresos por compartir.
+      %p Quieres hacer parte de Meetrico?
+      %p Envianos tus dátos, te visitaremos y conocerémos tu espacio. Con esto entrarás a formar parte de nuestra comunidad virtual.
+      %span Si quieres saber mas
+      = link_to t(:conoce_meetrico), about_path
+    .span6
+      %h2= t(:testimonials)
+      =  render 'testimonials'

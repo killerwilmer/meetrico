@@ -1,0 +1,22 @@
+%p
+  Hola!
+  Has recibido este correo de parte de
+  %strong
+    = @contact_message.name.try(:titleize)
+  cuyo correo es
+  %strong
+    = @contact_message.email
+%p
+  Esta interesado en esta oferta:
+  %strong
+    = @contact_message.url
+%p
+  En la linea de producto correspondiente a:
+  %strong
+    = @contact_message.try(:promo_name)
+-#%p
+  Un usuario interesado en Meetrico, el cual escribio en sus intereses:
+  %br
+  = @contact_message.message
+
+Correo enviado automaticamente por Meetrico :)

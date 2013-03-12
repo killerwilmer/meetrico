@@ -1,0 +1,40 @@
+<div id="about_content">
+  <h4>Ofrece tu espacio en Meetrico y recibe ingresos por compartir</h4>
+  <p>Puedes enviarnos tus dátos, te visitaremos y conocerémos tu espacio. Con esto entrarás a formar parte de nuestra comunidad virtual y ofrecer las salas, escritorios y mesas disponibles que quieres que pongamos a rentar.</p>
+
+  <h4>Cómo funciona?</h4>
+  <p>Hacemos los planos de tu espacio en 3d y los subimos a internet, puedes programar tus eventos y actividades, en las horas muertas lo ponemos a rentar y te dámos el 70% de lo que recibimos através de nuestra página. Es lo que se llama un perfecto win-win, todos ganamos y el medio ambiente también, por que reducimos desplazamientos </p>
+
+  <%= link_to 'Díme más!', '#', :id => "do_subscription_request" %>
+  <br /><br />
+  <div id="subscription_request_form_div" style="display:none">
+
+    <%= form_for(@subscription_request) do |f| %>
+
+
+      <div class="field">
+        <%= f.label "Que hay en tu espacio?" %><br />
+        <%= f.text_area :description, :rows => 7, :cols => 70 %>
+      </div>
+      <br />
+      <div class="field">
+        <%= f.label "Dáme tu teléfono y te llamamos!" %><br />
+        <%= f.text_field :phone %>
+      </div>
+      <br />
+      <div class="field">
+        <%= f.label "Dime tu ciudad?" %><br />
+        <br />
+        <%= f.select(:city_id, City.all.collect {|p| [ p.name, p.id ] }, { :include_blank => false }) %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :user_id %>
+      </div>
+      <br />
+      <div class="actions">
+        <%= f.submit "Enviar" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

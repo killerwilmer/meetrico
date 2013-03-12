@@ -1,0 +1,55 @@
+<ul>
+  <% (@coworking_space.tables.where("tipo = ? and item_category_id = ?", 'resource')).each do |table| %>
+
+    <li class="table !<%=  reserved_or_available_css(table) %>" id="table_<%= table.id %>" >
+      <%if table.name.to_s.length <= 3 %>
+        <h3>Producto No: <%= table.id %></h3>
+      <% else %>
+        <h3><%= table.name %></h3>
+      <% end %>
+      <%  if table.images.size > 0%>
+        <% image_info = FastImage.size(table.images.first.url_path) %>
+        <% if image_info %>
+          <% if image_info[1].to_i > 100 %>
+            <a href="/tables/<%= table.id %>" ><img src="<%= table.images.first.url_path %>" height="100"/></a>
+          <% elsif image_info[0].to_i > 150 %>
+            <a href="/tables/<%= table.id %>" ><img src="<%= table.images.first.url_path %>" width="150"/></a>
+          <% else %>
+            <a href="/tables/<%= table.id %>" ><img src="<%= table.images.first.url_path %>" /></a>
+          <% end %>
+        <% else %>
+          <img src="/images/logo3.png" width="150"/>
+        <% end %>
+      <% else %>
+        <img src="/images/logo3.png" width="150"/>
+      <% end %>
+      <br /><br />
+
+      <% if table.reserved? %>
+        <% reservation = Reservation.where(:table_id => table, :user_id => table.user).first %>
+
+        <div id="user_<%= table.user.id %>" class="user_profile">
+          <% if table.user.avatar %>
+            <div class="avatar"><%= image_tag(table.user.avatar, :width => "48") %></div>
+          <% end %>
+          <p class="name">
+            <%= table.user.name %>
+            <span style="font-size: 10px;">
+              Reservacion: <%= "#{reservation.start_time.strftime('%d %b de %Y - %I:%M%p')} a #{reservation.end_time.strftime('%I:%M%p')}" %>
+            </span>
+          </p>
+          <div class="bio"><p><%= table.user.bio[0..100] %></p>
+            <p><%= link_to "ver más", user_path(table.user), :class => "bio_link" %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <%= link_to "Reservar", new_reservation_path(:table_id => table.id), :class => "reservation" %>
+      <br />
+      <div class="wrapper_view_table_link">
+        <%= link_to "ver detalles del producto", table_path(table) %>
+      </div>
+
+    </li>
+  <% end %>
+</ul>

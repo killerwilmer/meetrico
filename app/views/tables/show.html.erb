@@ -1,0 +1,27 @@
+<h2>Producto</h2><br />
+<h4>Información Basica</h4>
+<hr />
+
+<p>
+  <strong>Nombre:</strong> <%= @table.name.to_s rescue 'No registra' %> <br />
+  <strong>Pertenece al espacio:</strong> <%= @table.coworking_space.name.to_s rescue 'No registra' %><br />
+  <strong>Fecha creación:</strong> <%= @table.created_at.strftime('%d %b de %Y - %I:%M%p') rescue 'No registra' %><br />
+  <strong>Estado:</strong> <%= "Reservado" if @table.booked %><%= "Disponible" unless @table.booked %><br />
+  <strong>Observaciones:</strong><br />
+  <%= @table.observations %>
+</p>
+
+<br />
+<h4>Im&aacute;genes actuales</h4>
+<hr />
+<% for image in @table.images %>
+  <img src="<%= image.url_path%>" width="250" alt="mesa-<%= @table.id.to_s+"-"+image.id.to_s %>"/>&nbsp;
+<% end %>
+<br /><br />
+
+<% if admin_signed_in? || (current_user == @table.coworking_space.user  && current_user.try(:owner?))%>
+  <%= link_to "Nueva imagen para el producto", :controller => :images, :action => :new, :type => 'table', :id => @table %>
+  &nbsp;|&nbsp;
+  <%= link_to 'volver', :back %>
+
+<% end %>

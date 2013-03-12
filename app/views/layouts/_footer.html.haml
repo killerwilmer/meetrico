@@ -1,0 +1,44 @@
+.row-fluid#contact
+  .span4
+    %h2= t(:contacto)
+    %ul
+      %li
+        %i.name
+        = t(:contact_name)
+      %li
+        %i.email
+        = t(:contact_email)
+      %li
+        %i.phone
+        = t(:contact_phone)
+      %li
+        %i.cell
+        = t(:contact_cell)
+      %li
+        %i.pin
+        = t(:contact_pin)
+      %li
+        = link_to t(:contact_facebook), :target => '_blank' do
+          %i.facebook
+          = t(:siguenos_facebook)
+      %li
+        = link_to t(:contact_twitter), :target => '_blank' do
+          %i.twitter
+          = t(:siguenos_twitter)
+  .span4
+    %h2.centered= t(:partners)
+    %ul.partners
+      %li= t(:cali)
+      %li
+        = link_to (image_tag 'welcome/cotelco.png'), 'http://cotelvalle.com/', :target => '_blank'
+        = link_to (image_tag 'welcome/comfandi.png'), 'http://www.comfandi.com.co/', :target => '_blank'
+      %li= t(:madrid)
+      %li
+        = link_to (image_tag 'welcome/logo_utopic.png'), 'http://www.utopicus.es/', :target => 'blank'
+        = link_to (image_tag 'welcome/logo_aje.png'), 'http://www.ajemadrid.es/', :target => '_blank'
+  .span4
+    %h2.centered= t(:reconocimientos)
+    %ul.recognition
+      %li
+        = link_to (image_tag 'welcome/cumbre_americas.png', title: 'Premio TIC América OEA'), 'http://www.ticamericas.net/news/dc041212.php', :target => '_blank'
+        = link_to (image_tag 'welcome/lapapaya.png', title: 'LaPapaya.org'), 'http://www.lapapaya.org/', :target => '_blank'

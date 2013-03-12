@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start time:</b>
+  <%= @reservation.start_time.strftime('%d %b de %Y - %I:%M%p') %>
+</p>
+
+<p>
+  <b>Duration:</b>
+  <%= @reservation.duration %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @reservation.user.bio %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @reservation.user.email %>
+</p>
+
+<% if admin_signed_in? || (current_user == @reservation.table.coworking_space.user  && current_user.try(:owner?))%>
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Back', reservations_path %>
+<% end %>

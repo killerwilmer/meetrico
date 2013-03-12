@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343960482.411826:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%4a30148e0960fd59476a43ed2be288b8I"logical_path;
+FI"4themes/default/fonts/museosans_500-webfont.woff;
+TI"pathname;
+FI"Q$root/app/assets/stylesheets/themes/default/fonts/museosans_500-webfont.woff;
+FI"content_type;
+FI"application/octet-stream;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"
+26496;
+FI"digest;
+F"%0c5be4d01c114a99bfd65bdb3c107f39I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

@@ -1,0 +1,206 @@
+<div class="content_home">
+  <div class="top">
+     <div id="sb-slider" class="sb-slider">
+       <!--THIS IS NOT THE INDEX USED-->
+       <%= image_tag 'welcome/uno.jpg', title: 'Que es Meetrico' %>
+        <%= image_tag 'welcome/dos.jpg', title: 'Que es Meetrico' %>
+        <%= image_tag 'welcome/tres.jpg', title: 'Que es Meetrico' %>
+        <%= image_tag 'welcome/cuatro.jpg', title: 'Que es Meetrico' %>
+     </div>
+  </div>
+  <div class="center">
+    <h1>
+    Espacios
+    </h1>
+    <p>
+    Los espacios son lugares para trabajar. A ellos pueden acudir todas las personas que por cualquier circunstancia necesiten un espacio extra para realizar sus actividades, bien sea durante un día, una semana, o incluso durante unos meses. Los espacios son perfectos para ayudar a todos los trabajadores que, por ejemplo, son autónomos y trabajan fuera de oficinas, pero que necesitan realizar reuniones ocasionales con clientes para realizar una explicación de un negocio o la presentación de un nuevo producto.
+    </p>
+    <div class="wrapper_spaces">
+    <div id="promos-espacios" class="views-row">
+    </div>
+    </div>
+  </div>
+  <div class="wrapper_social_media">
+    <div class="wrapper_facebook">
+      <h2>
+      Buscanos en Facebook
+      </h2>
+      <div class="bg_facebook">
+
+        <div class="facebook">
+          <div class="fb-like-box" data-href="http://www.facebook.com/pages/Meetrico/219044214827940" data-height="280" data-width="538" data-show-faces="false" data-stream="true" data-header="true"  style="background-color: #fff; margin-top: -39px; margin-left: -6px;"></div>
+        </div>
+       <div class="caras">
+          <div class="fb-like-box" data-href="http://www.facebook.com/pages/Meetrico/219044214827940" data-height="280" data-width="535" data-show-faces="true" data-stream="false" data-header="false"  style="background-color: #fff; margin-left: -3px; margin-top: -87px;"></div>
+      </div>
+
+
+      </div>
+       <div class="line_bottom"></div>
+    </div>
+  </div>
+<script>
+
+  $(document).ready(function(){
+    function query_coworking_spaces(categoryId, precio){
+
+      $('#promos-espacios').empty();
+
+      $.ajax({
+        url: '/coworking_spaces/query',
+        dataType: "json",
+        data: {
+          name: 'all',
+          limit: 8,
+          category_id: categoryId,
+          precio: precio
+        },
+        type: 'GET',
+        beforeSend: function(jqXHR, settings){
+          $('#promos-espacios').html('<img src="/images/ajax_loader.gif" alt="" width="150"/>');
+        },
+        success: function(data){
+          $('#promos-espacios').empty();
+          if(data.length >= 1){
+            $.map(data, function(item) {
+              var mainImage = undefined;
+              if(item.image_url == ""){
+                mainImage = "&nbsp;";
+              }else{
+                mainImage = '<img src="'+item.image_url+'" alt="" title="" class="imagecache imagecache-thumb_agenda imagecache-default imagecache-thumb_agenda_default" width="222" height="103" />';
+              }
+
+              var content = $('<div class="pastilla-perfil">'+
+
+                '<a href="/coworking_spaces/'+item.id+'" title="Ir a '+item.name+'">'+
+                '<div class="views-field-field-entradillaagenda-value">'+
+                '<div class="field-content"><strong>'+item.name+'</strong><br />'+
+                item.user.user.name+'<br />'+
+                item.category.category.name+'<br />'+
+                '<div class="field-content"><a href="/coworking_spaces/'+item.id+'">'+item.address+'</a></div>+</div>'+
+                '</div>'+
+                '</a>'+
+
+                '<div class="views-field-field-imagena1-fid">'+
+                '<span class="field-content">'+mainImage+'</span>'+
+                '</div>'+
+
+                '<div class="views-field-title">'+
+                '<span class="field-content"><a href="/coworking_spaces/'+item.id+'">'+item.name+'</a></span>'+
+                '</div>'+
+
+                '<div class="views-field-tid-1">'+
+                '<div class="field-content"><a href="/coworking_spaces/'+item.id+'">'+item.address+'</a></div>'+
+                '</div>'+
+
+                '<div id="thermometer_icon" class="'+item.price+' views-field-tid">'+
+                '<span class="field-content"><a href="/coworking_spaces/'+item.id+'">'+item.green+' $/hora</a></span>'+
+                '<div class="vud-widget votacion-widget" id="widget-node-207">'+
+
+                '<span  class=" alternate-votes-display">'+item.tables_left+' productos'+
+                '</span>'+
+
+                '</div>'+
+                '</div>'+
+
+                '</div>');
+              $('#promos-espacios').append(content);
+              /*return {
+            label: item.razon,
+            value: item.id+": "+item.razon
+          }*/
+            });
+          }else{
+            $('#promos-espacios').html('<p><h3>La consulta no arrojo resultados.</h3></p>');
+          }
+
+        }
+      });
+    }
+
+    function query_activities(categoryId, precio){
+      $('#promos-actividades').empty();
+      $.ajax({
+        url: '/activities/query',
+        dataType: "json",
+        data: {
+          name: 'all',
+          limit: 8,
+          category_id: categoryId,
+          precio: precio
+        },
+        type: 'GET',
+        success: function(data){
+          $.map(data, function(item) {
+            var mainImage = undefined;
+            if(item.image_url == null){
+              mainImage = "&nbsp;";
+            }else{
+              mainImage = '<img src="'+item.image_url+'" alt="" title="" class="imagecache imagecache-thumb_agenda imagecache-default imagecache-thumb_agenda_default" width="222" height="100" />';
+
+            }
+            //console.log( item.tables_left);
+            var disponibles = null;
+            if( item.tables_left != '0'){
+              disponibles = '<span class="alternate-votes-display">'+item.tables_left+' plazas, <a href="/reservations/new?activity_id='+item.id+'&table_id='+item.next_available_table.table.id+'">reserva ya!</a></span>';
+            }
+
+            if( item.tables_left == 0){
+              disponibles = '<span class="alternate-votes-display">sold out</span>';
+            }
+
+            var content = $('<div class="pastilla-perfil">'+
+
+              '<a href="/activities/'+item.id+'" title="Ir al evento">'+
+              '<div class="views-field-field-entradillaagenda-value">'+
+              '<div class="field-content"><strong>'+item.name+'</strong><br />'+
+              item.description+'<br />'+
+              item.category_name+'</div>'+
+              '</div>'+
+              '</a>'+
+              '<div class="views-field-field-imagena1-fid">'+
+              '<span class="field-content">'+mainImage+'</span>'+
+              '</div>'+
+
+              '<div class="views-field-title">'+
+              '<span class="field-content"><a href="/activities/'+item.id+'">'+item.name+'</a></span>'+
+              '</div>'+
+              '<div class="views-field-tid-1">'+
+              '<div class="field-content"><a href="/activities/'+item.id+'">'+item.address+'</a></div>'+
+              '</div>'+
+              '<div id="thermometer_icon" class="'+item.price+' views-field-tid">'+
+              '<div class="field-content"><a href="/activities/'+item.id+'">'+item.green+' $ </a>'+
+              '<span class="vud-widget votacion-widget" id="widget-node-207" >'+disponibles+'</span></div>'+
+              '</div>'+
+              '</div>');
+            $('#promos-actividades').append(content);
+            /*return {
+            label: item.razon,
+            value: item.id+": "+item.razon
+          }*/
+          });
+        }
+      });
+    }
+
+    $('#search').click(function(){
+      var filtroCategoria = $('#filtro_categoria').val();
+      var filtroPrecio = $('#filtro_precio').val();
+      var filtroTipo = $('#filtro_tipo').val();
+
+      //console.log(filtroCategoria+" "+filtroPrecio+" "+filtroTipo);
+      if(filtroTipo == "coworking_space"){
+        query_coworking_spaces(filtroCategoria, filtroPrecio);
+      }
+
+      /*if(filtroTipo == "activity"){
+        query_activities(filtroCategoria, filtroPrecio);
+      }*/
+    });
+
+    query_coworking_spaces("", "");
+    //query_activities("", "");
+
+  });
+</script>
+</div>

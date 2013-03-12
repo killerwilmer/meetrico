@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606786.075136:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%88a2c72cb7a23d63a40c778b1e6843e4I"logical_path;
+FI"welcome/lapapaya.png;
+TI"pathname;
+FI"1$root/app/assets/images/welcome/lapapaya.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"	8971;
+FI"digest;
+F"%81af6456ae202480a69a6c3f2af7e30eI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

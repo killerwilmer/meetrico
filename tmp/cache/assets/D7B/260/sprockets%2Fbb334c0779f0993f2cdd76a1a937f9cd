@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343960694.3477461:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%abe1fb9b8e09e750c3c4ab96440bd8d0I"logical_path;
+FI"=jui/redmond/images/ui-bg_inset-hard_100_fcfdfd_1x100.png;
+TI"pathname;
+FI"Z$root/app/assets/stylesheets/jui/redmond/images/ui-bg_inset-hard_100_fcfdfd_1x100.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"88;
+FI"digest;
+F"%d00cd2c69bf7b1b5c7b3ed5da6a9bfbfI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

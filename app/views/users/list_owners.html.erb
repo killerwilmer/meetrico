@@ -1,0 +1,35 @@
+<h1>Lista de propietarios</h1>
+
+<table class="table tablesorter" id="users-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Espacios</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to user.coworking_spaces.length.to_s, :controller => :coworking_spaces, :action => :list, :owner_id => user.id.to_s %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New user', new_user_registration_path %>
+<script>
+  $(document).ready(function() {
+    $("#users-table").tablesorter();
+  });
+</script>

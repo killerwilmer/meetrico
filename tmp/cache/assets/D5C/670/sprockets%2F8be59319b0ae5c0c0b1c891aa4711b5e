@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606786.025107:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%a392f2379dda4e3a486c3fe453479c43I"logical_path;
+FI"facebook16.png;
+TI"pathname;
+FI"+$root/app/assets/images/facebook16.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"838;
+FI"digest;
+F"%477d097773ec77b3a7246751435d8881I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

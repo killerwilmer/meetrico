@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606785.3923252:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%43d57a5ef148378059f12614bd381b44I"logical_path;
+FI"welcome/afterschool.jpg;
+TI"pathname;
+FI"4$root/app/assets/images/welcome/afterschool.jpg;
+FI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"
+29088;
+FI"digest;
+F"%4c4dbf530c8f37df86d6e5bfed40c929I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

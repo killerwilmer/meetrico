@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1359003548.039233:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%53cb438be0c4e8e36b1a363539729915I"logical_path;
+FI"welcome/about/join_us.jpg;
+TI"pathname;
+FI"6$root/app/assets/images/welcome/about/join_us.jpg;
+FI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"119861;
+FI"digest;
+F"%a056ef4871a6613447a6807c03dc1c9bI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

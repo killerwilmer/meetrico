@@ -1,0 +1,33 @@
+= javascript_include_tag 'thumb_gallery'
+= stylesheet_link_tag 'thumb_gallery'
+
+.container-fluid
+  .row-fluid
+    .span12
+      %h2= @coworking_space.try(:name)
+  .row-fluid
+    .span8#gallery-wrapper
+      %ul.nav.nav-tabs
+        %li.active
+          %a{"data-toggle" => "tab", :href => "#photos"}= t(:photos)
+        %li
+          %a{"data-toggle" => "tab", :href => "#blueprints"}= t(:blueprints)
+        %li
+          %a{"data-toggle" => "tab", :href => "#map"}= t(:maps)
+      .tab-content
+        #photos.tab-pane.active
+          %ul.gallery-view
+            %li
+              = image_tag 'welcome/about/coworking_test_image_1.jpg'
+              = image_tag 'welcome/about/coworking_test_image_2.jpg'
+        #blueprints.tab-pane
+          %ul.gallery-view
+            %li
+              = image_tag 'welcome/about/coworking_test_blueprint_1.jpg'
+              = image_tag 'welcome/about/coworking_test_blueprint_1.jpg'
+        #map.tab-pane
+          %ul.gallery-view
+            %li
+              = image_tag 'welcome/about/coworking_test_map_1.jpg'
+    .span4
+      %p= t(:some_regular_text_for_testing_like_lorem_impsum_html)

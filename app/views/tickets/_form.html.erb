@@ -1,0 +1,9 @@
+<div id="activities-wrapper">
+<%=form_for [@activity, @reservation, @ticket], :html => { :class => "form"} do |f| %>
+  <div class="field">
+    <%= f.label :state_id, 'Estado', :class => 'label' %><br />
+    <%= f.select :state_id, options_for_select(State.where("id != ?", @ticket.state.id).collect{|state| [state.name, state.id]}), :include_blank => true, :class => 'select required', :minlength => "3" %>
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

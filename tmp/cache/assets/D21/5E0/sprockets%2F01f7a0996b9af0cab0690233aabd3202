@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606786.099392:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%e33451bd25ad48fce4bca42aedc5592dI"logical_path;
+FI" welcome/cumbre_americas.png;
+TI"pathname;
+FI"8$root/app/assets/images/welcome/cumbre_americas.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"
+14749;
+FI"digest;
+F"%4598366cd841e27281bf59d03d70f323I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

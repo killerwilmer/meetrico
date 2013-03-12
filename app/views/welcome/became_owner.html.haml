@@ -1,0 +1,17 @@
+.container-fluid
+  .row-fluid#compartir-espacio
+    .span6
+      %h2= t(:comparte_espacio).upcase
+      %p Ofrece tu espacio en Meetrico y recibe ingresos por compartir.
+      %p ¿Quieres hacer parte de Meetrico?
+      %p Envíanos tus datos, te visitaremos y conocerémos tu espacio. Con esto entrarás a formar parte de nuestra comunidad virtual.
+      = form_for @contact_message, :html => { :id => 'contact-form' } do |f|
+        = f.text_field :name, :placeholder => t(:nombre_placeholder)
+        = f.email_field :email, :placeholder => t(:email_placeholder)
+        = f.text_area :message, :placeholder => t(:mensaje_placeholder), rows: 3
+        = f.submit t(:enviar), { :class => 'btn btn-success' }
+      %span Si quieres saber mas
+      = link_to t(:conoce_meetrico), about_path
+    .span6
+      %h2= t(:testimonials)
+      =  render 'testimonials'

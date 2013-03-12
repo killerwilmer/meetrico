@@ -1,0 +1,31 @@
+source 'http://rubygems.org'
+
+gem 'rails', '3.0.3'
+
+gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'heroku'
+gem 'heroku_san'
+gem 'omniauth', '0.2.6'
+gem 'devise'
+gem 'inherited_resources', '~> 1.2.1'
+gem 'chronic'
+#gem 'mysql'
+gem 'activemerchant'
+gem 'pg', :require => 'pg'
+gem 'rake', '0.8.7'
+gem 'nifty-generators'
+
+group :development, :test do
+   gem 'steak'
+   gem 'rspec'
+   gem 'spork'
+   gem 'launchy'
+   gem "capybara"
+   gem "rspec-rails"
+   gem "database_cleaner"
+   gem 'email_spec'
+   gem 'delorean'
+   gem "jquery-rails"
+end
+gem "mocha", :group => :test
+

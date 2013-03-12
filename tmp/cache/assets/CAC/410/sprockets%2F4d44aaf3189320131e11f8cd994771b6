@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606786.2203252:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%2230ac0c68f9779523b9c8533036d12bI"logical_path;
+FI"welcome/comfandi.png;
+TI"pathname;
+FI"1$root/app/assets/images/welcome/comfandi.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"	5776;
+FI"digest;
+F"%0f7b6e8cdf8c45b54e78ab0a7890ea95I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

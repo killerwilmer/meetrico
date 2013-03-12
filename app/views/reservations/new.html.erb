@@ -1,0 +1,20 @@
+<h1>Reserva para <%= @table.name %></h1>
+
+<table>
+  <tbody>
+    <tr>
+      <td colspan="2">
+        <h4><b>En espacio:</b> <%= link_to @table.coworking_space.name, coworking_space_path(@table.coworking_space) %></h4>
+        <h4><b>Linea:</b> <%= @table.item_category.name %></h4>
+      </td>
+    </tr>
+    <tr>
+      <td><%= render 'form' %></td>
+      <td><%= #render :file => 'carts/show_embedded'
+        %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p><%= link_to 'Cancelar', :back %></p>

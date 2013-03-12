@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606786.0157702:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%27e3566ff14ed56b19cb807569ce8433I"logical_path;
+FI"pin16.png;
+TI"pathname;
+FI"&$root/app/assets/images/pin16.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"750;
+FI"digest;
+F"%6a51b223b79a323fee317c2f3eb21dfdI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

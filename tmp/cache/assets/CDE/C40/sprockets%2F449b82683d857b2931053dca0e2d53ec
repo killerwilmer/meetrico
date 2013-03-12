@@ -1,0 +1,24 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343958154.323723:@value{	I"length:EFiYI"digest;
+F"%323d9fbce1ac5989af1904ce8985ba7eI"source;
+FI"Y(function() {
+
+  $(function() {
+    $('#banner_slider').carousel({
+      interval: 5000
+    });
+    $('.modal-promo-show').on('click', function() {
+      var redirection_url;
+      $('#contact_message_item_category_id').val($(this).data('item-category-id'));
+      redirection_url = $(this).data('url');
+      $('#modal_newsletter_email_box').data('url', redirection_url);
+      return $('#contact_message_url').val(redirection_url);
+    });
+    return $('#modal_newsletter_email_box').on('hidden', function() {
+      return window.location.replace($(this).data('url'));
+    });
+  });
+
+}).call(this);
+;
+FI"_version;
+F"%35805c83bb38e3f21fb72e23e6359e16

@@ -1,0 +1,136 @@
+  <span class="text_index">Meetrico es una aplicación online que te permite reservar espacios de trabajo disponibles, cerca de la zona en la que vives.</span>
+  <br /><br />
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+  function initialize() {
+    
+    var latlng = new google.maps.LatLng(40.385001,-3.687637);
+    var myOptions = {
+      zoom: 11,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.HYBRID
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+
+    
+    var image = new google.maps.MarkerImage(
+    'images/marker.png',
+    new google.maps.Size(32,38),
+    new google.maps.Point(0,0),
+    new google.maps.Point(19,32)
+  );
+
+    var shape = {
+      coord: [18,0,22,1,24,2,26,3,27,4,29,5,30,6,32,7,34,8,34,9,34,10,35,11,36,12,36,13,37,14,37,15,37,16,37,17,37,18,37,19,37,20,37,21,37,22,37,23,36,24,35,25,34,26,33,27,32,28,30,29,28,30,26,31,12,31,10,30,9,29,7,28,6,27,5,26,5,25,3,24,3,23,2,22,2,21,1,20,1,19,0,18,0,17,0,16,0,15,0,14,0,13,0,12,0,11,0,10,0,9,0,8,0,7,1,6,2,5,3,4,3,3,4,2,5,1,7,0,18,0],
+      type: 'poly'
+    };
+    $.ajax({
+      url: "/coworking_spaces/list",
+      dataType: "json",
+      data: {
+        category: "category",
+        tag: "tag",
+        format: 'json'
+      },
+      success: function(data) {
+        $.each(data, function(k,v){
+          var cws = v.coworking_space;
+          var Latlng = new google.maps.LatLng(parseFloat(cws.lat),parseFloat(cws.long));
+          var marker = new google.maps.Marker({
+            position: Latlng,
+            map: map,
+            title: cws.name,
+            icon: image,
+            shape: shape
+          });
+
+          google.maps.event.addListener(marker, 'click', function() {
+            addIcon(cws);
+          });
+        });
+      }
+    });
+  }
+
+
+
+  function  addIcon(cws) {
+
+    var myLatlng = new google.maps.LatLng(cws.lat, cws.long);
+    var myOptions = {
+      zoom: 15,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.HYBRID
+    }
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+    var image = new google.maps.MarkerImage(
+    'images/marker.png',
+    new google.maps.Size(32,38),
+    new google.maps.Point(0,0),
+    new google.maps.Point(19,32)
+  );
+
+    var shadow = new google.maps.MarkerImage(
+    'images/shadow.png',
+    new google.maps.Size(58,32),
+    new google.maps.Point(0,0),
+    new google.maps.Point(19,32)
+  );
+
+    var shape = {
+      coord: [18,0,22,1,24,2,26,3,27,4,29,5,30,6,32,7,34,8,34,9,34,10,35,11,36,
+        12,36,13,37,14,37,15,37,16,37,17,37,18,37,19,37,20,37,21,37,22,37,23,36,
+        24,35,25,34,26,33,27,32,28,30,29,28,30,26,31,12,31,10,30,9,29,7,28,6,27,
+        5,26,5,25,3,24,3,23,2,22,2,21,1,20,1,19,0,18,0,17,0,16,0,15,0,14,0,13,0,
+        12,0,11,0,10,0,9,0,8,0,7,1,6,2,5,3,4,3,3,4,2,5,1,7,0,18,0],
+      type: 'poly'
+    };
+
+    var marker2 = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title:cws.name,
+      icon: image,
+      
+      shape: shape
+    });
+
+    var addrsLong =  '<div class="info-window-content">'+cws.name+'<br /> <a href="/coworking_spaces/'+cws.id+'">detalle</a></div>';
+
+    myInfoWindowOptions = {
+      content: addrsLong
+    };
+
+    infoWindow = new google.maps.InfoWindow(myInfoWindowOptions);
+
+    google.maps.event.addListener(marker2, 'click', function() {
+      infoWindow.open(map,marker2);
+    });
+
+    google.maps.event.addListener(marker2, 'dragstart', function(){
+      infoWindow.close();
+    });
+
+    infoWindow.open(map,marker2);
+
+  }
+</script>
+<div id="marcomapa" class="redondeado">
+  <div id="mapa" >
+    <div id="map_canvas" style="width:920px; height:420px"></div>
+  </div>
+</div>
+<script>
+  initialize();
+</script>
+<br />
+   <h3>Un buscador de aquellos espacios, que más encajen con tus gustos, intereses y necesidades.</h3>
+  <br /> 
+  <h3>Através de meetrico, puedes rentabilizar los puestos de trabajo disponibles en tu oficina o un espacio que puedas habilitar para trabajar.</h3>
+
+  <br /><br /><br /><br />
+      <br /><br /><br />

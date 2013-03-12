@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343960850.262689:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%e8eba21a88b0cca383fe93902098f586I"logical_path;
+FI"-gallery_view/themes/light/panel-next.png;
+TI"pathname;
+FI"J$root/app/assets/stylesheets/gallery_view/themes/light/panel-next.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"379;
+FI"digest;
+F"%2f010106db75376b986784adcdc98d31I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

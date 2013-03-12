@@ -1,0 +1,5 @@
+<h2>Galeria del espacio</h2>
+<%= render :partial => 'images/list' %>
+
+<%= link_to "Nueva", :controller => :images, :action => :new, :type => 'coworking_space', :id => @coworking_space %>
+<%= link_to "Volver", :back %>

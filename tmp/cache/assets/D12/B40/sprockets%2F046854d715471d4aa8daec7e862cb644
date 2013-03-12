@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606785.469235:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%6acb95b290e0e7414f07f02034cf5785I"logical_path;
+FI"welcome/destrezas.png;
+TI"pathname;
+FI"2$root/app/assets/images/welcome/destrezas.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"128345;
+FI"digest;
+F"%7d84fc106a21d95ff5f98712d0e5f352I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

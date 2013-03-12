@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606785.5094411:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%99933a503a26dc1baa73e309e0f0de9aI"logical_path;
+FI"welcome/coworking.jpg;
+TI"pathname;
+FI"2$root/app/assets/images/welcome/coworking.jpg;
+FI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"
+23448;
+FI"digest;
+F"%ac4e640c9c9982f50f8ee5051dcbe96aI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

@@ -1,0 +1,28 @@
+- content_for(:javascripts) do
+  = javascript_include_tag 'coworking_spaces/list'
+
+- content_for(:stylesheets) do
+  = stylesheet_link_tag 'coworking_spaces'
+
+.container-fluid#spaces
+  .row-fluid
+    .span12
+      %h2= t(:espacios).upcase
+  - (@coworking_spaces).in_groups_of(3).each do |row|
+    .row-fluid
+      - row.each do |coworking_space|
+        - if coworking_space
+          .span4
+            .item-box
+              = link_to coworking_space_path(coworking_space) do
+                - if (img = coworking_space.images.first)
+                  = image_tag img.url_path
+                - else
+                  = t(:no_image_provided)
+                .item-overlay
+                  %h3= coworking_space.try(:name)
+                  %p= coworking_space.try(:city).try(:name)
+                .item-category
+                  %h4= coworking_space.try(:category).try(:name)
+        - else
+          .span4

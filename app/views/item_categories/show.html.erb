@@ -1,0 +1,16 @@
+<h2><%="Lineas de producto" %></h2>
+<hr />
+<p>
+  <strong>Nombre:</strong>
+  <%= @item_category.name %>
+</p>
+<p>
+  <strong>Descripcion:</strong>
+  <%= @item_category.description %>
+</p>
+
+<p>
+  <%= link_to "Editar", edit_item_category_path(@item_category) %> |
+  <%= link_to "Eliminar", @item_category, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Ver todas", item_categories_path %>
+</p>

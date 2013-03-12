@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Meetrico - Admin</title>
+    <%= stylesheet_link_tag 'base' %>
+    <%= stylesheet_link_tag 'themes/default/style' %>
+    <%= stylesheet_link_tag 'themes/blue/style' %>
+    <%= stylesheet_link_tag 'jui/jquery-ui' %>
+    <%= stylesheet_link_tag 'jui/redmond/jquery-ui-1.8.5.custom' %>
+    <%= javascript_include_tag 'jquery', 'jquery-ui', 'rails', 'application'%>
+    <%= javascript_include_tag 'jquery.tools.min' %>
+    <%= javascript_include_tag 'jquery.form' %>
+    <%= javascript_include_tag 'jquery.validate' %>
+    <%= javascript_include_tag 'additional-methods' %>
+    <%= javascript_include_tag 'jquery.tablesorter' %>
+
+    <%= javascript_include_tag 'modules/coworking_spaces' %>
+    <%= javascript_include_tag 'modules/activities' %>
+    <!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.gallery_view"></script>
+<![endif]-->
+    <%= csrf_meta_tag %>
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <section>
+          <a href="/"><%= image_tag("logo3.png", :size => "220x70") %></a>
+        </section>
+        <div id="user-navigation">
+          <ul>
+            <li><%= link_to "Inicio", root_url %></li>
+            <% if admin_signed_in? %>
+              <li><%= link_to "Mi espacio", :controller => 'admins', :action => 'index' %> </li>
+            <% else%>
+              <li><%= link_to "Conoce Metro Cubic", about_path %></li>
+            <% end %>
+            <% if admin_signed_in? %>
+              <li><%= link_to current_admin.name, "#"  %></li>
+              <li><%= link_to "Cerrar sesión", destroy_admin_session_path %></li>
+            <% else %>
+              <li><%= link_to "Crear cuenta", new_admin_registration_path %></li>
+              <li><%= link_to "Acceder", new_admin_session_path %></li>
+
+              <%= link_to "Iniciar sesión con Facebook", "/auth/facebook", :class => "facebook_login" %>
+            <% end %>
+          </ul>
+        </div>
+
+      </div>
+      <div id="wrapper" class="wat-cf">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+        <div id="sidebar">
+          <div class="block">
+            <h3>Hola <%= current_admin.name.capitalize rescue '' %> </h3>
+            <div class="content">
+              <p>Aquí puedes administrar tus reservas</p>
+            </div>
+          </div>
+          <div class="block">
+            <h3>Switch Theme</h3>
+            <ul class="navigation">
+              <!-- <li><%= #link_to "Setup", :controller => :configurations, :action => :index
+              %></li> -->
+              <li><%= link_to "Usuarios", :controller => :users, :action => :index %></li>
+              <li><%= link_to "Propietarios", :controller => :users, :action => :list_owners %></li>
+              <li><%= link_to "Espacios", coworking_spaces_path %></li>
+              <li><%= link_to "Categorias de espacios", :controller => :categories, :action => :index%></li>
+              <li><%= link_to "Productos", :controller => :tables, :action => :index %></li>
+              <li><%= link_to "Lineas de Productos", :controller => :item_categories, :action => :index %></li>
+              <li><%= link_to "Actividades", :controller => :activities, :action => :index %></li>
+              <li>
+                <%= link_to "Reservas", :controller => :reservations, :action => :index %>
+
+
+              </li>
+              <!-- <li><%= #link_to "Solicitud suscripción", :controller => :subscription_requests, :action => :index
+              %></li> -->
+              <li>
+                <%= link_to "Solicitud de reservas", :controller => :reservations, :action => :index, :state => 'solicitada' %>
+                <br />
+                <br />
+                <br />
+                <br />
+              </li>
+              <li>
+                <%= link_to "Cerrar sesión", destroy_admin_session_path %>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <div id="main">
+          <div class="block">
+            <div class="content">
+              <div class="inner">
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+          <div id="footer">
+            <div class="block">
+              <p>Copyright Meetrico 2011. Space sharing</p>
+            </div>
+            <%= render :partial => "layouts/footer" %>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </body>
+</html>
+

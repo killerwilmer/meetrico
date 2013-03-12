@@ -1,0 +1,134 @@
+<%= form_for(@reservation) do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+        <% @reservation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div id="info">
+    <!-- <h3>La reserva comenzará a las <%= @table.next_available_hour.strftime("%H:00") %>h</h3> -->
+  </div>
+  <p>
+    <%= "¿Que dia quieres?" %><br />
+    <input type="text" id="attempt_init_date" name="attempt[init_date]" size="30" class="calendar" value="<%= @reservation.start_time.to_date %> "/>
+  </p>
+  <p>
+    <%= "¿A que hora?" %><br />
+    <select id="attempt_init_time" name="attempt[init_time]" class="calendar" >
+      <% 24.times do |t| %>
+        <%
+        show = ""
+        if t < 10
+          show = "0" + t.to_s + ":00"
+        else
+          show = t.to_s + ":00"
+        end
+      %>
+        <option value="<%= show %>" <%= "selected" if show == @reservation.start_time.strftime('%H:%M') %> ><%= show %></option>
+      <% end %>
+
+    </select>
+  </p>
+  <p>
+    <%= f.label :duration, "¿Cuánto tiempo necesitas?" %><br />
+    <%= f.select :duration, [["1 hora",1], ["2 horas",2], ["3 horas",3], ["4 horas",4], ["5 horas",5]], {},{:class => "calendar"} %>
+  </p>
+
+  <%= fields_for :user do |user|%>
+    <p>
+      <%= user.label :bio, "Cuéntanos a que te dedicas y quien eres..." %><br />
+      <%= user.text_area :bio, :size => "100x8" %>
+    </p>
+  <% end %>
+
+  <% if current_user.try(:owner?) and @table.coworking_space.user == current_user%>
+    <div id="recurrent-reservations-wrapper">
+      <span id="recurrent-check-wrapper"><%= f.check_box :recurrent %> repetir esta reserva</span>
+      <% if @reservation.recurrent %>
+      <span id="recurrent-type-wrapper" ><%= select 'options', 'recurrent_type', options_for_select([["Diaria","dayly"], ["Semanal", "weekly"], ["Mensual", "monthly"]]) %></span>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :start_time %>
+  <%= f.hidden_field :table_id %>
+  <%= f.hidden_field :user_id %>
+  <%= f.select :state_id, State.all.collect {|p| [ p.name, p.id.to_i ] } %>
+  <div id="price_total">
+    <table border="0" cellpadding="15" cellspacing="15" >
+      <tr>
+        <td>
+          <p >El importe total de la reserva es de <span id="total"><%=  @table.item_category.price(@table.coworking_space) %></span>$</p>
+        </td>
+        <td>
+          <div id="validation_result" style="display: none;">
+            <div id="message"></div><br />
+            <div id="next_available_time"></div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="actions">
+    <%= f.submit "Actualizar reserva" %>
+  </div>
+<% end %>
+<script>
+  $('.calendar, #attempt_init_time').change(function() {
+    var init_date = $('#attempt_init_date').val();
+    var init_time = $('#attempt_init_time').val();
+    $('#reservation_start_time').val(init_date+" "+init_time);
+
+    $("#total").html(<%= @table.coworking_space.price %> * $('#reservation_duration option:selected').val());
+  });
+
+  $('.calendar').change(function(){
+    var init_date = $('#attempt_init_date').val();
+    var init_time = $('#attempt_init_time').val();
+    var duration = $('#reservation_duration').val();
+
+    $.ajax({
+      url: '/tables/validate_reservation_datetime',
+      dataType: "json",
+      data: {
+        init_date: init_date,
+        init_time: init_time,
+        id: <%= @table.id %>,
+        duration: duration
+      },
+      type: 'GET',
+      beforeSend: function(object){
+        $('#validation_result').hide();
+        $('#reservation_submit').attr('disabled', false);
+        if(init_date == "" || init_time == ""){
+          console.log('out false')
+          return false;
+        }
+      },
+      success: function(data){
+
+        if(!$('#validation_result').is(':visible')){
+          $('#validation_result').show();
+          $('#message').empty();
+          $('#message').html(data.message);
+          $('#next_available_time').html("");
+        }
+        if(data.valid == false){
+          console.log("disable button")
+          $('#reservation_submit').attr('disabled', true);
+          $('#next_available_time').html("Puedes reservar este item a partir de las: "+data.next_available_time);
+
+        }
+      }
+    });
+  });
+</script>
+
+

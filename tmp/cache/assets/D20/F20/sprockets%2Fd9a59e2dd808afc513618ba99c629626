@@ -1,0 +1,374 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1359003553.909195:@value{I"
+class:EFI"BundledAsset;
+FI"id;
+F"%749e8e4f62dcf364b4e2cfce1198219bI"logical_path;
+FI",welcome/video_slider/anythingslider.css;
+TI"pathname;
+FI"R$root/app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb;
+FI"content_type;
+FI"text/css;
+FI"
+mtime;
+FI"2012-07-29T18:32:44-05:00;
+FI"	body;
+FI"ê3/*
+	AnythingSlider v1.8+ Default theme
+	By Chris Coyier: http://css-tricks.com
+	with major improvements by Doug Neiner: http://pixelgraphics.us/
+	based on work by Remy Sharp: http://jqueryfordesigners.com/
+*/
+/*****************************
+  SET DEFAULT DIMENSIONS HERE
+ *****************************/
+/* change the ID & dimensions to match your slider */
+/* line 13, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+#slider {
+  /*width: 700px;*/
+  /*height: 315px;*/
+  list-style: none;
+  /* Prevent FOUC (see FAQ page) and keep things readable if javascript is disabled */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/******************
+  SET STYLING HERE
+ ******************
+ =================================
+ Default state (no keyboard focus)
+ ==================================*/
+/* Overall Wrapper */
+/* line 30, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default {
+  margin: 0 auto;
+  /* 45px right & left padding for the arrows, 28px @ bottom for navigation */
+  padding: 0 45px 28px 45px;
+}
+/* line 34, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingWindow {
+  border-top: 3px solid #777;
+  border-bottom: 3px solid #777;
+}
+/* line 37, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingControls a {
+  /* top shadow */
+  background: #777777 url(/assets/anythingslider/default.png) center -288px repeat-x;
+  color: #000;
+  border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 5px 5px;
+}
+/* line 44, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingControls a span {
+  visibility: visible;
+}
+/* line 46, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingControls a.cur {
+  background: #888;
+  color: #000;
+}
+/* line 49, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingControls a.start-stop {
+  background-color: #040;
+  color: #ddd;
+}
+/* line 52, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingControls a.start-stop.playing {
+  background-color: #800;
+}
+/* line 54, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingControls a.start-stop:hover, .anythingSlider-default .anythingControls a.start-stop.hover, .anythingSlider-default .anythingControls a.start-stop .anythingControls a:hover {
+  background-image: none;
+  color: #ddd;
+}
+/* line 58, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default.activeSlider .anythingWindow {
+  border-color: #7C9127;
+}
+/* line 60, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default.activeSlider .anythingControls a {
+  /* background image = top shadow */
+  background-color: #7C9127;
+}
+/* line 63, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default.activeSlider .anythingControls a.cur, .anythingSlider-default.activeSlider .anythingControls a:hover {
+  /* background image removed */
+  background: #7C9127;
+}
+/* line 66, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default.activeSlider .anythingControls a.start-stop {
+  background-color: #080;
+  color: #fff;
+}
+/* line 69, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default.activeSlider .anythingControls a.start-stop.playing {
+  background-color: #d00;
+  color: #fff;
+}
+/* line 73, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default.activeSlider .start-stop:hover, .anythingSlider-default.activeSlider .start-stop.hover {
+  color: #fff;
+}
+/* line 75, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .arrow {
+  top: 50%;
+  position: absolute;
+  display: block;
+}
+/* line 79, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .arrow a {
+  display: block;
+  width: 45px;
+  height: 140px;
+  margin: -70px 0 0 0;
+  /* half height of image */
+  text-align: center;
+  outline: 0;
+  background: url(/assets/anythingslider/default.png) no-repeat;
+}
+/* line 88, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .back {
+  left: 0;
+}
+/* line 90, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .back a {
+  background-position: left top;
+}
+/* line 92, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .back a:hover, .anythingSlider-default .back a.hover {
+  background-position: left -140px;
+}
+/* line 94, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .forward {
+  right: 0;
+}
+/* line 96, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .forward a {
+  background-position: right top;
+}
+/* line 98, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .forward a:hover, .anythingSlider-default .forward a.hover {
+  background-position: right -140px;
+}
+/* line 100, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingControls {
+  outline: 0;
+  display: none;
+}
+/* line 103, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingControls ul {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+/* line 107, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingControls ul li {
+  display: inline;
+}
+/* line 109, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingControls ul a {
+  font: 11px/18px Georgia, Serif;
+  display: inline-block;
+  text-decoration: none;
+  padding: 2px 8px;
+  height: 18px;
+  margin: 0 5px 0 0;
+  text-align: center;
+  outline: 0;
+}
+/* line 118, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingControls .anythingNavWindow {
+  overflow: hidden;
+  float: left;
+}
+/* line 121, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider-default .anythingControls .start-stop {
+  padding: 2px 5px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  float: right;
+  z-index: 100;
+  outline: 0;
+}
+
+/* slider window - top & bottom borders, default state */
+/* Navigation buttons + start/stop button, default state */
+/* Make sure navigation text is visible */
+/* Navigation current button, default state */
+/* start-stop button, stopped, default state */
+/* start-stop button, playing, default state */
+/* start-stop button, default hovered text color (when visible) */
+/* hide nav/start-stop background image shadow on hover - makes the button appear to come forward */
+/*
+ =================================
+ Active State (has keyboard focus)
+ =================================
+*/
+/* slider window - top & bottom borders, active state */
+/* Navigation buttons, active state */
+/* Navigation current & hovered button, active state */
+/* start-stop button, stopped, active state */
+/* start-stop button, playing, active state */
+/* start-stop button, active slider hovered text color (when visible) */
+/************************
+  NAVIGATION POSITIONING
+ ************************/
+/* Navigation Arrows */
+/* back arrow */
+/* forward arrow */
+/* Navigation Links */
+/* navigationSize window */
+/* Autoplay Start/Stop button */
+/***********************
+  IE8 AND OLDER STYLING
+ ***********************/
+/* Navigation Arrows */
+/* line 184, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.as-oldie .anythingSlider-default .arrow {
+  top: 30%;
+}
+/* line 186, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.as-oldie .anythingSlider-default .arrow a {
+  margin: 0;
+}
+/* line 189, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.as-oldie .anythingSlider-default .anythingControls li {
+  margin-left: 3px;
+}
+/* line 191, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.as-oldie .anythingSlider-default .anythingControls a {
+  margin: 0;
+}
+/* line 193, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.as-oldie .anythingSlider-default .anythingNavWindow {
+  margin: 0 2px;
+}
+/* line 195, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.as-oldie .anythingSlider-default .anythingNavWindow li {
+  padding: 3px 0 0 0;
+}
+
+/* margin between nav buttons just looks better */
+/* When using the navigationSize option, the side margins need to be zero
+	None of the navigation panels look good in IE7 now =( */
+/***********************
+  COMMON SLIDER STYLING
+ ***********************/
+/* Overall Wrapper */
+/* line 208, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider {
+  display: block;
+  overflow: visible !important;
+  position: relative;
+  transition-duration: 0;
+  -o-transition-duration: 0;
+  -moz-transition-duration: 0;
+  -webkit-transition-duration: 0;
+}
+/* line 212, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider .anythingWindow {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+/* line 217, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider .anythingBase {
+  background: transparent;
+  list-style: none;
+  position: absolute;
+  overflow: visible !important;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+/* line 227, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider .arrow span {
+  display: block;
+  visibility: hidden;
+}
+/* line 230, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider .arrow.disabled {
+  display: none;
+}
+/* line 232, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider .panel {
+  background: transparent;
+  display: block;
+  overflow: hidden;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+/* line 239, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider .vertical .panel {
+  float: none;
+}
+/* line 242, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider .fade .panel {
+  float: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+/* line 248, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider .fade .activePage {
+  z-index: 0;
+}
+/* line 251, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider.rtl .anythingWindow {
+  direction: ltr;
+  unicode-bidi: bidi-override;
+}
+/* line 254, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider.rtl .anythingControls ul {
+  float: left;
+}
+/* line 256, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider.rtl .anythingControls ul a {
+  float: right;
+}
+/* line 258, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider.rtl .start-stop {
+  /* float: right; */
+}
+/* line 264, ../../../../app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb */
+.anythingSlider .anythingWindow, .anythingSlider .anythingControls a, .anythingSlider .arrow a, .anythingSlider .start-stop {
+  transition-duration: 0;
+  -o-transition-duration: 0;
+  -moz-transition-duration: 0;
+  -webkit-transition-duration: 0;
+}
+
+/* anythingSlider viewport window */
+/* anythingSlider base (original element) */
+/* Navigation arrow text; indent moved to span inside "a", for IE7;
+  apparently, a negative text-indent on an "a" link moves the link as well as the text */
+/* disabled arrows, hide or reduce opacity: opacity: .5; filter: alpha(opacity=50); */
+/* all panels inside the slider; horizontal mode */
+/* vertical mode */
+/* fade mode */
+/* fade mode active page - visible & on top */
+/***********************
+  RTL STYLING
+ ***********************/
+/* slider autoplay right-to-left, reverse order of nav links to look better */
+/* move nav link group to left */
+/* reverse order of nav links */
+/* move start/stop button - in case you want to switch sides */
+/* probably not necessary, but added just in case */
+;
+FI"asset_paths;
+F[I"R$root/app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb;
+FI"dependency_paths;
+F[{I"	path;
+FI"R$root/app/assets/stylesheets/welcome/video_slider/anythingslider.css.scss.erb;
+FI"
+mtime;
+FIu:	Time·€  À‚:@_zoneI"COT;
+T:offsetiþ°¹I"hexdigest;
+F"%7c4237f73882092927787f03f44f8a4dI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

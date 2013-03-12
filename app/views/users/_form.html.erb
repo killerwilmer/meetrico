@@ -1,0 +1,29 @@
+<%= form_for(@user) do |f| %>
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <%= f.label :name, "Nombre:" %><br />
+  <%= f.text_field :name %><br /><br />
+
+  <%= f.label :bio, "Acerca de ti:" %><br />
+  <%= f.text_area :bio, :size => "40x4" %><br /><br />
+
+  <%= f.label :avatar, "Url Foto:" %><br />
+  <%= f.text_field :avatar, :size => "100" %>
+  <br /><br /><br />
+  <div class="actions">
+    <%= f.submit "Actualizar" %>
+  </div>
+  
+<% end %>

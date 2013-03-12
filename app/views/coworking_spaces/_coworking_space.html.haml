@@ -1,0 +1,103 @@
+= stylesheet_link_tag 'fullcalendar/fullcalendar', 'thumb_gallery'
+= javascript_include_tag 'fullcalendar/fullcalendar.min', 'thumb_gallery'
+- content_for :javascripts do
+  = javascript_include_tag 'coworking_spaces/show'
+:javascript
+  $(document).ready(function() {
+
+      $('#calendar').fullCalendar({
+          header: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'month,basicWeek,basicDay'
+          },
+          firstDay: 1,
+          aspectRatio: 3.2,
+          editable: false,
+          events: "/reservations/list.json?coworking_space_id= #{@coworking_space.id.to_s}  ",
+          loading: function(bool) {
+              if (bool) $('#loading').show();
+              else $('#loading').hide();
+          }
+
+      });
+
+      $('#activities_calendar').fullCalendar({
+          header: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'month,basicWeek,basicDay'
+          },
+          firstDay: 1,
+          aspectRatio: 3.2,
+          editable: false,
+          events: "/activities/list.json?coworking_space_id= #{@coworking_space.id.to_s}  ",
+          loading: function(bool) {
+              if (bool) $('#loading').show();
+              else $('#loading').hide();
+          }
+
+      });
+
+  });
+:css
+  #loading {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+  }
+
+  #calendar,#activities_calendar {
+      width: 850px;
+      margin: 0 auto;
+  }
+
+  .slider{
+      max-height: 600px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .slider ul li{
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+.container-fluid
+  .row-fluid
+    .span12
+      %h2= @coworking_space.name
+  #space.row-fluid
+    .span8#gallery-wrapper
+      %ul.nav.nav-tabs
+        %li.active
+          %a{"data-toggle" => "tab", :href => "#photos"}= t(:photos)
+      .tab-content
+        #photos.tab-pane.active
+          %ul.gallery-view
+            %li
+              - if @coworking_space.images.size > 0
+                - @coworking_space.images.each do |img|
+                  = image_tag img.url_path
+              - else
+                = image_tag 'welcome/about/coworking_test_image_2.jpg'
+    .span4
+      - if @coworking_space.description
+        #space_description.cws_description
+          %h4 Descripción
+          %hr/
+          = @coworking_space.description
+  - @coworking_space.item_categories.in_groups_of(3, false).each do |row|
+    %br
+    .row-fluid
+      - row.each do |item_category|
+        .span4
+          = render 'welcome/promo/promo', item_category: ItemCategoryDecorator.decorate(item_category)
+  %br/
+  %h2
+    Disponibilidad de espacio en #{@coworking_space.name}
+  #calendar
+  %h2
+    Actividades en #{@coworking_space.name}
+  #activities_calendar
+= render 'shared/contact_box', contact_message: @contact_message

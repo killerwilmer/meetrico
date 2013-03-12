@@ -1,0 +1,17 @@
+<div id="shooping_cart">
+<%=  "Shopping Cart" %>
+
+<%= render :partial => 'carts/cart', :locals => {:cart => @cart, :edit => true} %>
+
+<!-- <p>
+  <%= #link_to "Continue Shopping", products_path
+  %> |
+  <%= #link_to "Checkout", new_order_path
+  %>
+</p> -->
+<p>
+  <%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_new_order_path %>
+</p>
+<div id="results"></div>
+
+</div>

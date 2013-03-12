@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1355918000.7594051:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%9ad4655e13009820017d0e700118f897I"logical_path;
+FI",gallery_view/themes/light/pause-big.png;
+TI"pathname;
+FI"I$root/app/assets/stylesheets/gallery_view/themes/light/pause-big.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"354;
+FI"digest;
+F"%fb2685ed3a10b96a1198f00d054fce43I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

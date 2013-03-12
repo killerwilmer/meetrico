@@ -1,0 +1,303 @@
+/*
+	AnythingSlider v1.8+ Metallic theme
+	By Rob Garrison
+*/
+/*****************************
+  SET DEFAULT DIMENSIONS HERE
+ *****************************/
+/* change the ID & dimensions to match your slider */
+
+#slider {
+  width: 700px;
+  height: 390px;
+  list-style: none;
+/* Prevent FOUC (see FAQ page) and keep things readable if javascript is disabled */
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+/******************
+  SET STYLING HERE
+ ******************
+ =================================
+ Default state (no keyboard focus)
+ ==================================*/
+/* Overall Wrapper */
+
+.anythingSlider-metallic {
+  margin: 0 auto;
+/* 23px right & left padding for the navigation arrows */
+  padding: 0 23px;
+  .anythingWindow {
+    border-top: 3px solid #333;
+    border-bottom: 3px solid #333; }
+  .anythingControls a {
+    background: transparent url(<%= asset_path 'anythingslider/arrows-metallic.png' %>) -68px -40px repeat-x; //../images/arrows-metallic.png
+    color: #000;
+    border: #000 1px solid;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    &.cur, &:hover {
+      background-position: -70px -137px;
+      background-color: #888;
+      color: #000; }
+    &.start-stop {
+      background: #040;
+      color: #ddd;
+    /* top shadow */
+      -moz-box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.5);
+      -webkit-box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.5);
+      box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.5);
+      &.playing {
+        background-color: #800; }
+      &:hover, &.hover, .anythingControls a:hover {
+        color: #fff;
+      /* clear top shadow */
+        -moz-box-shadow: inset 0 0 0 #000000;
+        -webkit-box-shadow: inset 0 0 0 #000000;
+        box-shadow: inset 0 0 0 #000000; } } }
+  &.activeSlider {
+    .anythingWindow {
+      border-color: #0355a3; }
+    .anythingControls a {
+      background-color: transparent;
+      &.cur, &:hover {
+        background-position: -76px -57px;
+        background-color: #ccc; }
+      &.start-stop {
+        background: #080;
+        color: #fff;
+        &.playing {
+          color: #fff;
+          background: #d00; } } }
+    .start-stop {
+      &:hover, &.hover {
+        color: #fff; } } }
+  .arrow {
+    top: 50%;
+    position: absolute;
+    display: block;
+    z-index: 100;
+    a {
+      display: block;
+      width: 45px;
+      height: 95px;
+      margin: -47.5px 0 0 0;
+    /* half height of image */
+      text-align: center;
+      outline: 0;
+      background: url(<%= asset_path 'anythingslider/arrows-metallic.png' %>) no-repeat; } }
+  .back {
+    left: 0;
+    a {
+      background-position: left bottom;
+      &:hover, &.hover {
+        background-position: left top; } } }
+  .forward {
+    right: 0;
+    a {
+      background-position: right bottom;
+      &:hover, &.hover {
+        background-position: right top; } } }
+  .anythingControls {
+    height: 15px;
+  /* limit height, needed for IE9 of all things */
+    outline: 0;
+    display: none;
+    float: right;
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+    margin: 0 45px;
+    z-index: 100;
+    opacity: 0.90;
+    filter: alpha(opacity = 90);
+    ul {
+      margin: 0;
+      padding: 0;
+      float: left;
+      li {
+        list-style: none;
+        float: left;
+        margin: 0;
+        padding: 0; }
+      a {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin: 3px;
+        padding: 0;
+        text-decoration: none;
+        text-align: center;
+        outline: 0; } }
+    span {
+      display: block;
+      visibility: hidden; }
+    .anythingNavWindow {
+      overflow: hidden;
+      float: left; }
+    li {
+      &.prev span, &.next span {
+        visibility: visible;
+        position: relative;
+        top: -6px;
+      /* bring navigationSize text arrows into view */
+        color: #fff; } }
+    .start-stop {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 3px;
+      padding: 0;
+      text-align: center;
+      text-decoration: none;
+      z-index: 100;
+      outline: 0; } } }
+
+/* slider window - top & bottom borders, default state */
+
+/* Navigation buttons + start/stop button, default state */
+
+/* Navigation current button, default state */
+
+/* start-stop button, stopped, default state */
+
+/* start-stop button, playing, default state */
+
+/* start-stop button, default hovered text color (when visible) */
+/* hide nav/start-stop background image shadow on hover - makes the button appear to come forward */
+
+/*
+ =================================
+ Active State (has keyboard focus)
+ =================================
+*/
+/* slider window - top & bottom borders, active state */
+
+/* Navigation buttons, active state */
+
+/* Navigation current button, active state */
+
+/* start-stop button, stopped, active state */
+
+/* start-stop button, playing, active state */
+
+/* start-stop button, active slider hovered text color (when visible) */
+
+/************************
+  NAVIGATION POSITIONING
+ ************************/
+/* Navigation Arrows */
+
+/* back arrow */
+
+/* forward arrow */
+
+/* Navigation Links */
+
+/* navigationSize window */
+
+/* navigationSize nav arrow positioning */
+
+/* Autoplay Start/Stop button */
+
+/***********************
+IE8 AND OLDER STYLING
+***********************/
+/* Navigation Arrows */
+
+.as-oldie .arrow {
+  top: 40%;
+  a {
+    margin: 0; } }
+
+/***********************
+  COMMON SLIDER STYLING
+ ***********************/
+/* Overall Wrapper */
+
+.anythingSlider {
+  display: block;
+  overflow: visible !important;
+  position: relative;
+  .anythingWindow {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%; }
+  .anythingBase {
+    background: transparent;
+    list-style: none;
+    position: absolute;
+    overflow: visible !important;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0; }
+  .arrow {
+    span {
+      display: block;
+      visibility: hidden; }
+    &.disabled {
+      display: none; } }
+  .panel {
+    background: transparent;
+    display: block;
+    overflow: hidden;
+    float: left;
+    padding: 0;
+    margin: 0; }
+  .vertical .panel {
+    float: none; }
+  .fade {
+    .panel {
+      float: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1; }
+    .activePage {
+      z-index: 0; } }
+  &.rtl {
+    .anythingWindow {
+      direction: ltr;
+      unicode-bidi: bidi-override; }
+    .anythingControls ul {
+      float: left;
+      a {
+        float: right; } }
+    .start-stop {
+    /* float: right; */ } }
+  .anythingWindow, .anythingControls a, .arrow a, .start-stop {
+    transition-duration: 0;
+    -o-transition-duration: 0;
+    -moz-transition-duration: 0;
+    -webkit-transition-duration: 0; } }
+
+/* anythingSlider viewport window */
+
+/* anythingSlider base (original element) */
+
+/* Navigation arrow text; indent moved to span inside "a", for IE7;
+	apparently, a negative text-indent on an "a" link moves the link as well as the text */
+
+/* disabled arrows, hide or reduce opacity: opacity: .5; filter: alpha(opacity=50); */
+
+/* all panels inside the slider; horizontal mode */
+
+/* vertical mode */
+
+/* fade mode */
+
+/* fade mode active page - visible & on top */
+
+/***********************
+  RTL STYLING
+ ***********************/
+/* slider autoplay right-to-left, reverse order of nav links to look better */
+
+/* move nav link group to left */
+/* reverse order of nav links */
+/* move start/stop button - in case you want to switch sides */
+
+/* probably not necessary, but added just in case */

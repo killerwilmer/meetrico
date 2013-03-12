@@ -1,0 +1,52 @@
+<%= h  "Activities" %>
+<%= will_paginate @activities %>
+<table class="table tablesorter" id="activity-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Fecha inicio</th>
+      <th>Fecha fin</th>
+      <th>Total Cupos</th>
+      <th>Separados por <br />el propietario</th>
+      <th>Reservas <br /> Publicas</th>
+      <th>Disponibles</th>
+      <th>Booking</th>
+      <th colspan="4">Operaciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for activity in @activities %>
+      <tr>
+        <td><%= activity.name rescue '' %></td>
+        <td><%= activity.description[0..100]+" ..." rescue '' %></td>
+        <td><%= activity.start_date.strftime('%d %b de %Y - %I:%M%p') rescue '' %></td>
+        <td><%= activity.end_date.strftime('%d %b de %Y - %I:%M%p') rescue '' %></td>
+        <td><%= activity.num_tickets.to_s rescue '' %></td>
+        <td><%= activity.num_owner_tickets.to_s rescue '' %></td>
+        <td><%= (activity.num_tickets - (activity.num_available_tickets + activity.num_owner_tickets)).to_s rescue '' %></td>
+        <td><%= activity.num_available_tickets.to_s rescue '' %></td>
+        <td>
+          <% if activity.percentage_booked > 0.0
+          %>
+            <%= (activity.percentage_booked*100).round.to_s %> %
+          <% else %>
+            0.0 %
+          <% end %>
+        </td>
+        <td><%= link_to "Booking", activity_reservations_url(activity) %></td>
+        <td><%= link_to "Ver", activity %></td>
+        <td><%= #link_to "Editar", edit_activity_path(activity)
+          %></td>
+        <td><%= link_to "Eliminar", activity, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @activities %>
+<p><%= link_to "New Activity", new_activity_path %></p>
+<script>
+  $(document).ready(function() {
+    $("#activity-table").tablesorter();
+  });
+</script>

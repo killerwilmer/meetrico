@@ -1,0 +1,184 @@
+<%= form_for(@coworking_space, :html => { :class => "form"}) do |f| %>
+  <% if @coworking_space.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coworking_space.errors.count, "error") %> prohibited this coworking_space from being saved:</h2>
+      <ul>
+        <% @coworking_space.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, 'Nombre', :class => 'label' %><br />
+    <%= f.text_field :name, :class => 'text_field required', :minlength => "3" %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label :description, 'Descripción', :class => 'label' %><br />
+    <%= f.text_area :description, :class => 'text_area', :size => '40x4'%>
+  </div>
+  <br />
+
+  <br />
+  <h4>Lineas de producto:</h4>
+  <hr />
+  <div id="item-categories-container">
+    <div class="ic-header" >
+      <div class=""></div>
+      <div class="ic-header-item">
+        Nombre:
+      </div>
+      <div class="ic-header-item">
+        No. Prod:
+      </div>
+      <div class="ic-header-item">
+        Disponibles:
+      </div>
+      <div class="ic-header-item">
+        Green:
+      </div>
+      <div class="ic-header-item">
+        Yellow:
+      </div>
+      <div class="ic-header-item">
+        Red:
+      </div>
+    </div>
+    <% ItemCategory.all.each do |line| %>
+      <% ic_cws = ItemCategoriesCoworkingSpace.where(:coworking_space_id => @coworking_space.id, :item_category_id => line.id).first %>
+      <% ic_cws = ItemCategoriesCoworkingSpace.new(:item_category_id => line.id) unless ic_cws %>
+      <% checked = false %>
+      <% checked = true if !ic_cws.num_tables.nil? && ic_cws.num_tables > 0 %>
+      <div class="ic-row-wrapper">
+        <div class="ic-cell">
+          <%= check_box '', '', :class => "choose-line-item", :checked => checked %>
+          <%= line.name %> <!-- Primera linea de la tabla con el nombre -->
+        </div>
+        <div class="ic-cell">
+          <%= text_field 'lines['+line.id.to_s+']', 'num_tables', :size => 6, :disabled => ic_cws.num_tables == 0 ? true : false, :value => ic_cws.num_tables %>
+        </div>
+        <div class="ic-cell">
+          <%= text_field 'lines['+line.id.to_s+']', 'available', :size => 6, :disabled => ic_cws.available == nil ? true : false, :value => ic_cws.available %>
+        </div>
+        <div class="ic-cell">
+          <%= text_field 'lines['+line.id.to_s+']', 'green', :size => 6, :disabled => ic_cws.green == nil ? true : false, :value => ic_cws.green %>
+        </div>
+        <div class="ic-cell">
+          <%= text_field 'lines['+line.id.to_s+']', 'yellow', :size => 6, :disabled => ic_cws.yellow == nil ? true : false, :value => ic_cws.yellow %>
+        </div>
+        <div class="ic-cell">
+          <%= text_field 'lines['+line.id.to_s+']', 'red', :size => 6, :disabled => ic_cws.red == nil ? true : false, :value => ic_cws.red %>
+        </div>
+      </div>
+      <!-- <div style="float: left; margin: 15px;">
+        <div><b><%= #line.name
+      %> </b></div>
+        <div><b>No. Productos: </b> <%= #text_field("","",:size => 10)
+      %> </div>
+        <div>
+          <span ><b>Tarifas: </b></span><br />
+          <span class="label_tarifa"><b>Verde</b>:</span> <%= #text_field 'lines['+line.id.to_s+']', 'green', :size => 6
+      %><br />
+          <span class="label_tarifa"><b>Amarillo</b>:</span> <%= #text_field 'lines['+line.id.to_s+']', 'yellow', :size => 6
+      %><br />
+          <span class="label_tarifa"><b>Rojo</b>:</span> <%= #text_field 'lines['+line.id.to_s+']', 'red', :size => 6
+      %><br />
+        </div>
+      </div> -->
+
+
+    <% end %>
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <div>
+    <h4>Ubicación</h4>
+    <hr />
+    <table>
+      <tr>
+        <td>
+          <div class="field">
+            <br />
+            <%= f.label :city_id, 'Ciudad', :class => 'label' %><br />
+            <%= f.collection_select :city_id, City.all, :id, :name, :class => "required" %>
+          </div>
+        </td>
+        <td><div class="field">
+            <br />
+            <%= f.label :lat, 'Latitud', :class => 'label'%>  <br />
+            <%= f.text_field :lat, :class => 'text_field' %>
+          </div></td>
+        <td>
+          <div class="field">
+            <br />
+            <%= f.label :long, 'Longitud', :class => 'label' %><br />
+            <%= f.text_field :long, :class => 'text_field' %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <div class="field">
+            <br />
+            <%= f.label :address, 'Direccion', :class => 'label' %><br />
+            <%= f.text_area :address, :class => 'text_area', :size => '60x2' %>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+
+
+
+  </div>
+  <% #if @coworking_space.user != current_user and not current_user.try(:owner?) and admin_signed_in?
+  %>
+  <% if admin_signed_in? %>
+    <div class="field">
+      <br />
+      <%= f.label :user_id, 'Propietario', :class => 'label' %><br />
+      <%= f.select :user_id, User.where(:owner => true).collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}, :class => "required select" %>
+
+    </div>
+  <% end %>
+  <div class="field">
+    <br />
+    <%= f.label :category_id , 'Categoría', :class => 'label' %><br />
+    <%= f.select :category_id, Category.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}, :class => "required select" %>
+
+  </div>
+  <!-- <div class="field">
+    <br />
+    <label class="label"><%= #"Propietario"
+  %></label>
+    <br />
+    <input type="text" id="cws_user_name" name="user_name" size="30" title="Introduzca las primeras letras del nombre y el sistema completara automaticamente"/><br />
+  <!-- <span class="help_text" style="font-size: x-small; color: #cfcfcf;">Introduzca las primeras letras del nombre y el sistema completara automaticamente</span><br />
+  -->
+  <!-- <p>
+  <% #if not @coworking_space.user.nil? and @coworking_space.user.name != ''
+  %>
+      <label>Propietario Actual: </label><%= #link_to @coworking_space.user.name, user_path(@coworking_space.user)
+  %>
+  <% #end %>
+  </p> -->
+  <!-- </div> -->
+
+
+  <div class="actions">
+    <br />
+    <%= f.submit %>
+  </div>
+  <br />
+<% end %>

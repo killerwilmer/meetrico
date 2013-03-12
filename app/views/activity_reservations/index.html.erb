@@ -1,0 +1,73 @@
+<%= javascript_include_tag 'modules/reservations' %>
+<h1>Lista de reservas</h1>
+
+<br /><br /><br />
+<table class="table tablesorter" id="reservations-table" >
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Producto</th>
+      <th>Espacio</th>
+      <th>Start time</th>
+      <th>Duration</th>
+      <th>End time</th>
+      <th>Estado</th>
+      <th colspan="5" align="center"> Acciones </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.user.name rescue 'No aplica' %></td>
+        <td><%= reservation.table.name.to_s  rescue 'No aplica' %></td>
+        <td><%= reservation.table.coworking_space.name.to_s  rescue 'No aplica' %></td>
+        <td><%= reservation.start_time.strftime('%d %b de %Y - %I:%M%p') rescue 'No aplica' %></td>
+        <td><%= reservation.duration rescue 'No hay' %> hora</td>
+        <td><%= reservation.end_time.strftime('%d %b de %Y - %I:%M%p') rescue 'No aplica' %></td>
+        <td>
+          <%= reservation.state.name unless reservation.inactive? rescue 'No aplica' %>
+          <%= 'INACTIVA' if reservation.inactive? rescue 'No aplica' %>
+        </td>
+        <td><%= link_to 'Show', reservation %></td>
+        <td>
+          <%= link_to "Tickets", activity_reservation_tickets_url(@activity, reservation) %>
+        </td>
+
+        <td><%= link_to 'Anular', edit_reservation_path(reservation) %></td>
+        <td><%= link_to 'Editar', edit_reservation_path(reservation) %></td>
+        <td><%= link_to('Eliminar', reservation, :confirm => 'Are you sure?', :method => :delete) if reservation.inactive? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div id="notice"></div>
+<br />
+
+
+<br /><br /><br />
+
+<script>
+  $(document).ready(function() {
+    $("#reservations-table").tablesorter();
+
+    $('#liberate-resources').live('click', function(){
+
+      $.ajax({
+        url: '/reservations/liberate',
+        dataType: "json",
+        type: 'GET',
+        beforeSend: function(object){
+
+        },
+        success: function(data){
+          if(data.success == "true"){
+            $('<div><h2>'+data.message+'</h2></div>').dialog({
+              title: 'Atención'
+            });
+          }
+        }
+      });
+    });
+
+  });
+</script>

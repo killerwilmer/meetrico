@@ -1,0 +1,25 @@
+<%= form_for @table do |f| %>
+
+  <p>
+    <%= f.label :coworking_space_id, 'Espacio' %><br />
+    <%= f.select :coworking_space_id, @coworking_spaces.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}, :class => "required select", :minlength => "3" %>
+  </p>
+
+  <p>
+    <%= f.label :booked, "Reservado ?" %><br />
+    <%= f.check_box :booked %>
+  </p>
+  <p>
+    <%= f.label :name, "Nombre" %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :observations, "Observaciones" %><br />
+    <%= f.text_area :observations, :size => "40x5" %>
+  </p>
+  <p>
+    <%= f.label :tipo %><br />
+    <%= f.select :tipo, options_for_select([ ["Plaza", "ticket"], ["Producto o Espacio", "resource"] ], @table.tipo) %>
+  </p>
+  <p><%= f.submit "Guardar" %></p>
+<% end %>

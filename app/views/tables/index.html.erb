@@ -1,0 +1,50 @@
+<h1>Lista de productos</h1>
+
+<table class="table tablesorter" id="productos-table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Espacio</th>
+      <th>Propietario</th>
+      <th>Fecha Creación</th>
+      <th>Estado</th>
+      <th>Fotos</th>
+      <th colspan="4"></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @tables.each do |table| %>
+      <tr>
+        <td><%= table.id.to_s %></td>
+        <td><%= table.name %></td>
+        <td><%= table.coworking_space.name rescue '' %></td>
+        <td><%= table.coworking_space.user.name rescue ''%></td>
+        <td><%= table.created_at.strftime('%d %b de %Y - %I:%M%p') rescue ''%></td>
+        <td><%= "reservado" if table.booked? rescue ''%><%= "disponible" if not table.booked? rescue ''%></td>
+        <td><%= table.images.length.to_s rescue '0'%></td>
+        <td><%= link_to 'Ver', table %></td>
+        <td><%= link_to 'Editar', edit_table_path(table) %></td>
+        <td>
+          <% if not table.booked? %>
+            <%= link_to 'Eliminar', table, :confirm => 'Are you sure?', :method => :delete %>
+          <% else %>
+            &nbsp;
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= will_paginate @tables %>
+<br /><br /><br />
+<%= link_to 'Nuevo producto', new_table_path %>
+<script>
+  $(document).ready(function() {
+    $("#productos-table").tablesorter();
+  });
+</script>

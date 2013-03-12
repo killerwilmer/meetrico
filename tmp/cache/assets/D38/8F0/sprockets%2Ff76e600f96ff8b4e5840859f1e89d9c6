@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606785.376895:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%2ef89359b6e9ded083a0d389e55785b1I"logical_path;
+FI"Oswald-Light-webfont.woff;
+TI"pathname;
+FI"5$root/app/assets/fonts/Oswald-Light-webfont.woff;
+FI"content_type;
+FI"application/octet-stream;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"
+16408;
+FI"digest;
+F"%5b918edca73f5bbf774314e251ab29a5I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

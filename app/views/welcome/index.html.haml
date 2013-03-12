@@ -1,0 +1,26 @@
+= render 'layouts/banner'
+.container-fluid
+  .row-fluid
+    %h2.centered= t(:promotions)
+  .row-fluid#promociones
+    - @promos.each do |promo|
+      .span4
+        = render 'welcome/promo/promo', item_category: promo
+  .row-fluid
+    .span12
+      = link_to 'Más promociones', promotions_path, id: 'more-promos'
+  .row-fluid#espacios-eventos
+    .span6
+      .box
+        .image-wrapper
+          = link_to (image_tag 'welcome/coworking.jpg'), list_coworking_spaces_path, :class => 'image modal-promo-show'
+        .image-overlay
+          = link_to t(:sitios_donde_ir), list_coworking_spaces_path
+        %p= t(:descripcion_sitios_donde_ir)
+    .span6
+      .box
+        = link_to (image_tag 'welcome/events.jpg'), '#', :class => 'image modal-promo-show'#, :target => 'blank'
+        = link_to t(:planes_en_tu_ciudad), '#'
+        %p= t(:descripcion_planes_en_tu_ciudad)
+
+= render 'shared/contact_box', contact_message: @contact_message

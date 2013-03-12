@@ -1,0 +1,95 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <div id="fb-root"></div>
+      <div id="iconos">
+        <div class="fb-like" data-send="true" data-width="450" data-show-faces="true" data-font="lucida grande"></div>
+      </div>
+
+      <h2><%= @activity.name %></h2>
+      <div id="loading" style='display:none'>loading...</div>
+      <div id="info">
+        <table  cellpadding="0" cellspacing="0" border="0" width="100%">
+          <tr>
+            <td rowspan="2">
+              <div style=" margin: 2px; max-width: 600px;">
+                <% if not @activity.main_image_url.nil? and @activity.main_image_url.length > 3 %>
+                    <img src="<%= @activity.main_image_url %>" alt="<%= @activity.name %>"  style="max-width: 600px;"/>
+                <% else %>
+                    <img src="/images/logo3.png" alt="<%= @activity.name %>" width="350"/>
+                <% end %>
+              </div>
+            </td>
+            <td>
+              <div id="thermometer" class="<%= activity_thermometer_css %>">
+                <h3>
+                  <% if @activity.num_available_tickets == 0 %>
+                      No hay  plazas disponibles
+                  <% else %>
+                      <% if @activity.num_available_tickets == 1 %>
+                          Queda <%= @activity.num_available_tickets %> plazas a...
+                      <% else %>
+                          Quedan <%= @activity.num_available_tickets %> plazas a...
+                      <% end %>
+                      </h3>
+                      <ul>
+                        <li class="price <%= activity_thermometer_css %>">$<%= @activity.price %>/ticket</li>
+                      </ul>
+                  <% end %>
+                  </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div >
+                <p>
+                  <%= @activity.description %>
+                </p>
+                <p>
+                  <strong>Espacio:</strong>
+                  <%= link_to @activity.table.coworking_space.name, coworking_space_path(@activity.table.coworking_space) %>
+                </p>
+                <p>
+                  <strong>Fecha Inicio:</strong>
+                  <%= @activity.start_date.strftime('%d %b de %Y - %I:%M%p') %>
+                </p>
+                <p>
+                  <strong>Fecha Fin:</strong>
+                  <%= @activity.end_date.strftime('%d %b de %Y - %I:%M%p') %>
+                </p>
+                <p>
+                  <strong>Total plazas:</strong>
+                  <%= @activity.num_tickets.to_s %>
+                </p>
+                <p>
+                  <strong>Plazas disponibles:</strong>
+                  <%= @activity.num_available_tickets.to_s %>
+                </p>
+              </div>
+            </td>
+
+          </tr>
+        </table>
+        <li class="table-activity" id="table_<%= @activity.table.id %>" >
+          <div>
+            <%= link_to "Reservar tickets", contact_path, :class => "reservation" %>
+          </div>
+        </li>
+
+      </div>
+
+      <br />
+
+
+      <% if admin_signed_in? && (current_user == @activity.table.coworking_space.user  && current_user.try(:owner?))%>
+          <p>
+            <%= link_to "Booking", booking_activity_path(@activity) %> |
+            <!-- <%= #link_to "Edit", edit_activity_path(@activity)
+          %> -->
+            <%= link_to "Eliminar", @activity, :confirm => 'Are you sure?', :method => :delete %> |
+            <%= link_to "Ver todas las actividades", activities_path %>
+          </p>
+      <% end %>
+    </div>
+  </div>
+</div>

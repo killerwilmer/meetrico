@@ -1,0 +1,1 @@
+<%= select("options", "table_id", options_for_select(tables.collect{|table| [table.name, table.id]}), :include_blank => true) %>

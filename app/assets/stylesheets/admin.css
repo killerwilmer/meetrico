@@ -1,0 +1,71 @@
+/* 
+    Document   : admin
+    Created on : 25/07/2011, 11:58:47 AM
+    Author     : dafevara
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+.admin_wrapper {
+      width: 1280px;
+      margin: 0 auto;
+      text-align: left;
+	  overflow: hidden;
+}
+
+#dashboard_wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100.5em;
+    /*_width: 100.5em;*/
+    /*!border: 2px;*/
+    /*!border-style: solid;*/
+    /*!border-color: #c00;*/
+    min-height: 468px;
+}
+
+#dashboard_sidebar{
+    float: left;
+    margin: 10px;
+    padding-left: 30px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #fff;
+    border-radius: 3px;
+    border-style: dashed;
+    border-color: #c0c0c0;
+    border-width: 1px;
+}
+
+#dashboard_content{
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    background-color: #FCF8F1;
+    min-width: 74.0em;
+    border-radius: 3px;
+    border-style: dashed;
+    border-color: #c0c0c0;
+    border-width: 1px;
+    min-height: 408px;
+}
+
+#dashboard_content table, td, tr, th {
+    margin: 5px;
+    padding: 5px;
+}
+
+#dashboard_sidebar li {
+    list-style:none; margin:0; padding:0;
+    list-style-image:url('icon_list.gif')
+}
+
+.help_text{
+    font-size: xx-small;
+    color: #cfcfcf;
+}

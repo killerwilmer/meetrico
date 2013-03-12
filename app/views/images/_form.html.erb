@@ -1,0 +1,41 @@
+<%= form_for @image do |f| %>
+
+  <% if @type == 'coworking_space' and not @resource.nil? %>
+    <h4>Coworking Space</h4><br />
+
+    im&aacute;genes actuales:
+    <hr />
+    <% for image in @resource.images %>
+      <img src="<%= image.url_path%>" width="250" alt="<%= @resource.name+"-"+image.id.to_s %>"/>&nbsp;
+    <% end %>
+    <br /><br />
+    <label>Nombre: <%= @resource.name rescue 'No registra' %> </label><br />
+    <label>Precio: <%= @resource.price.to_s rescue 'No registra' %> </label><br />
+    <label>Mesas disponibles: <%= @resource.tables_left('resource').to_s rescue 'No registra' %> </label><br />
+    <input type="hidden" id="type" name="type" value="coworking_space" />
+    <input type="hidden" id="id" name="id" value="<%= @resource.id.to_s %>" />
+
+  <% end %>
+
+  <% if @type == 'table' and not @resource.nil? %>
+    <h4>Producto</h4><br />
+
+    im&aacute;genes actuales:
+    <hr />
+    <% for image in @resource.images %>
+      <img src="<%= image.url_path%>" width="250" alt="mesa-<%= @resource.id.to_s+"-"+image.id.to_s %>"/>&nbsp;
+    <% end %>
+    <br /><br />
+    <label>Número o Nombre: <%= @resource.name.to_s rescue 'No registra' %> </label><br />
+    
+    <input type="hidden" id="type" name="type" value="table" />
+    <input type="hidden" id="id" name="id" value="<%= @resource.id.to_s %>" />
+
+  <% end %>
+  <p>
+    <%= f.label :url_path,'Ingresa la URL, ejemplo: http://paginaweb.com/ruta/imagen.jpg' %><br />
+    <%= f.text_field :url_path, :size => "70" %>
+  </p>
+
+  <p><%= f.submit %></p>
+<% end %>

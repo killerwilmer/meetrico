@@ -1,0 +1,289 @@
+"es":
+  male: "Hombre"
+  female: "Mujer"
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d de %b"
+      long: "%d de %B de %Y"
+
+    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+    abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
+
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%A, %d de %B de %Y %H:%M:%S %z"
+      short: "%d de %b %H:%M"
+      long: "%d de %B de %Y %H:%M"
+    am: "am"
+    pm: "pm"
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " y "
+      last_word_connector: ", y "
+
+    select:
+      prompt: "Por favor seleccione"
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+
+    currency:
+      format:
+        format: "%n %u"
+        unit: "$"
+        separator: "."
+        delimiter: ","
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+
+    percentage:
+      format:
+        delimiter: ""
+
+    precision:
+      format:
+        delimiter: ""
+
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: "Mil"
+          million: "Millón"
+          billion: "Mil millones"
+          trillion: "Trillón"
+          quadrillion: "Cuatrillón"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "medio minuto"
+      less_than_x_seconds:
+        one: "menos de 1 segundo"
+        other: "menos de %{count} segundos"
+      x_seconds:
+        one: "1 segundo"
+        other: "%{count} segundos"
+      less_than_x_minutes:
+        one: "menos de 1 minuto"
+        other: "menos de %{count} minutos"
+      x_minutes:
+        one: "1 minuto"
+        other: "%{count} minutos"
+      about_x_hours:
+        one: "alrededor de 1 hora"
+        other: "alrededor de %{count} horas"
+      x_days:
+        one: "1 día"
+        other: "%{count} días"
+      about_x_months:
+        one: "alrededor de 1 mes"
+        other: "alrededor de %{count} meses"
+      x_months:
+        one: "1 mes"
+        other: "%{count} meses"
+      about_x_years:
+        one: "alrededor de 1 año"
+        other: "alrededor de %{count} años"
+      over_x_years:
+        one: "más de 1 año"
+        other: "más de %{count} años"
+      almost_x_years:
+        one: "casi 1 año"
+        other: "casi %{count} años"
+    prompts:
+      year: "Año"
+      month: "Mes"
+      day: "Día"
+      hour: "Hora"
+      minute: "Minutos"
+      second: "Segundos"
+
+  helpers:
+    select:
+      prompt: "Por favor seleccione"
+
+    submit:
+      create: 'Guardar %{model}'
+      update: 'Actualizar %{model}'
+      submit: 'Guardar %{model}'
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      inclusion: "no está incluido en la lista"
+      exclusion: "está reservado"
+      invalid: "no es válido"
+      confirmation: "no coincide con la confirmación"
+      accepted: "debe ser aceptado"
+      empty: "no puede estar vacío"
+      blank: "no puede estar en blanco"
+      too_long: "es demasiado largo (%{count} caracteres máximo)"
+      too_short: "es demasiado corto (%{count} caracteres mínimo)"
+      wrong_length: "no tiene la longitud correcta (%{count} caracteres exactos)"
+      not_a_number: "no es un número"
+      not_an_integer: "debe ser un entero"
+      greater_than: "debe ser mayor que %{count}"
+      greater_than_or_equal_to: "debe ser mayor que o igual a %{count}"
+      equal_to: "debe ser igual a %{count}"
+      less_than: "debe ser menor que %{count}"
+      less_than_or_equal_to: "debe ser menor que o igual a %{count}"
+      odd: "debe ser impar"
+      even: "debe ser par"
+
+  activerecord:
+    models:
+      user: "Usuario"
+    attributes:
+      user:
+        password: "Contraseña"      
+    errors:
+      template:
+        header:
+          one: "No se pudo guardar este/a %{model} porque se encontró 1 error"
+          other: "No se pudo guardar este/a %{model} porque se encontraron %{count} errores"
+        # The variable :count is also available
+        body: "Se encontraron problemas con los siguientes campos:"
+
+      messages:
+        taken: "ya está en uso"
+        record_invalid: "La validación falló: %{errors}"
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute}%{message}"
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Siguiente &#8594;"
+    page_gap: "&hellip;"
+
+  contacto: "Contacto"
+  reconocimientos: "Reconocimientos"
+  conoce_meetrico: "Conoce Meetrico"
+  comparte_espacio: "Comparte tu espacio"
+  registrate: "Regístrate"
+  iniciar_sesion: "Login"
+  espacios: "Espacios"
+  eventos: "Eventos"
+  contact_name: "  Felipe Velasquez"
+  contact_email: "  felipe@meetrico.com"
+  contact_phone: "  +57 1 893 2289"
+  contact_cell: "  320 721 7643"
+  contact_pin: '  29ac45c8'
+  contact_facebook: 'http://www.facebook.com/Meetricosharedspaces'
+  contact_twitter: 'https://twitter.com/Meetrico'
+  sitios_donde_ir: "SITIOS DONDE IR"
+#  testimonials: "LO QUE DICEN NUESTROS CLIENTES"
+  testimonials: "SOBRE NOSOTROS"
+  planes_en_tu_ciudad: "PLANES EN TU CIUDAD"
+  contactanos: "contactanos"
+  nombre_placeholder: "Tu Nombre..."
+  empresa_placeholder: "Tu Empresa..."
+  email_placeholder: "Tu email..."
+  mensaje_placeholder: "Tu espacio..."
+  enviar: "Enviar"
+  go: "Hacer parte de Meetrico"
+  wish_to_receive_notifications: "Deseo recibir notificaciones en mi email."
+  what_are_you_looking_for: "¿Qué estas buscando?"
+  descripcion_sitios_donde_ir: "Encuentra espacios de trabajo, salones de eventos, restaurantes, salas de juntas..."
+  descripcion_planes_en_tu_ciudad: "Los mejores eventos: partidos de fútbol, conciertos, cine, teatro, diversión..."
+  siguenos_facebook: " Hazte fan en Facebook"
+  siguenos_twitter: " Síguenos en Twitter"
+  photos: "Fotos"
+  blueprints: "Planos"
+  no_image_provided: "No hay imagenes para este espacio"
+  contact_message_sent: "Su mensaje de contacto fue enviado, en breve sera contactado por nosotros!"
+  contact_message_has_errors: "Por favor completa los campos requeridos para contactarte correctamente, gracias!"
+  maps: "Mapas"
+  why_meetrico: "¿POR QUÉ MEETRICO?"
+  why_meetrico_main_content: |
+    ¿Sabías que hay empresas que abren sus oficinas para compartir mesas de trabajo y colaborar en proyectos? -
+    En Meetrico te ofrecemos un buscador de aquellos espacios, que más encajen con tus gustos, intereses y necesidades.
+  why_meetrico_item_1: "¿Te gustaría conocer gente con la quien compartir afinidades?"
+  why_meetrico_item_2: "¿Quieres formar parte de comunidades que trabajan por una sociedad mejor?"
+  why_meetrico_item_3: "¿Te gustaría colaborar en proyectos o que otras personas colaboren contigo?"
+  what_is_it_for: "¿Para qué sirve?"
+  what_is_it_for_main_content_html: |
+    Para todas aquellas personas que tengan espacios y los quieran ofrecer, Meetrico les permite poner a rentar las
+    plazas disponibles dentro de sus oficinas, talleres, locales o sitios de trabajo. <br><br> Para aquellos que buscan
+    un sitio para trabajar, emprender o una oportunidad de negocio, empleo o colaboración Meetrico les ofrece esas
+    plazas a unas mejores tarifas.
+  who_is_it_for: "¿Para quién es Meetrico?"
+  who_is_it_for_content_html: |
+    Autónomos y personas que necesiten espacios alternativos para trabajar.<br><br>Administradores y gestores de
+    espacios de coworking, galerías de arte, salones de eventos y actividades."
+  go_online: "Date de alta!"
+  go_online_html: |
+    Date de alta en Meetrico y te enviaremos información sobre los mejores espacios de trabajo según tus proyectos,
+    con tarifas y promociones disponibles.<br><br>Regístrate en la web y reserva alguno de nuestros espacios de trabajo.
+    A partir de ahora puedes empezar a disfrutar de nuestra comunidad web y recuerda que...<br>¡Siempre hay un mundo
+    nuevo por descubrir!"
+  share_your_space: "Ofrece tu espacio en Meetrico y recibe ingresos por compartir!"
+  share_your_space_content_html: |
+    Envíanos tus datos, te visitaremos y conocerémos tu espacio. Con esto entrarás a formar parte de nuestra
+    comunidad virtual y ofrecer las salas, escritorios y mesas disponibles que quieres que pongamos a rentar.<br><br>
+    Hacemos los planos de tu espacio en 3D y los subimos a internet, puedes programar tus eventos y actividades,
+    en las horas muertas lo ponemos a rentar y te dámos el 70% de lo que recibimos através de nuestra página. Es lo
+    que se llama un perfecto win-win, todos ganamos y el medio ambiente también, por que reducimos desplazamientos
+  some_regular_text_for_testing_like_lorem_impsum_html: |
+    Lorem ipsum dolor sit amet, at velit dissentiet theophrastus vim, ius cu utamur tincidunt moderatius, sit atqui
+    electram no. Modus pertinax eos cu, erat principes per cu, usu stet virtute discere at. Aeterno luptatum usu eu,
+    cu vivendo epicuri mel. Id per molestie petentium, choro tollit referrentur ad usu, option percipit has id.  Vis
+    ne debitis detracto suscipit, cu mel volumus eligendi officiis, at vix mazim oportere.<br><br>Vidit salutandi an
+    duo, et duo clita tritani probatus, eum rebum tollit concludaturque an. Vix at legendos honestatis, cu facete
+    oporteat facilisi mea. Vel everti oblique ea, his modo aliquip debitis etc.
+  admin: "Admin"
+  promotions: "PROMOCIONES"
+  slogan: "¡En Meetrico encontrarás espacios de trabajo, hoteles, clubes, restaurantes y eventos en Cali a un precio increíble.!"
+  logged_in_as: "-> %{username}"
+  log_out: "Cerrar sesión"
+  discount: "Descuento"
+  price: "Precio:"
+  save: "Ahorre:"
+  want_to_know_more: "¿Quiéres saber más?"
+  give_us_your_email_to_receive_this_promo: "Déjanos tu correo electrónico para más información..."
+  que_es_esto: "¿Qué es esto?"
+  tell_me_more: "Cuéntame más..."
+  tags_placeholders: "¿Qué otras ofertas quieres recibir? (clubes, hoteles, restaurantes, eventos...)"
+  accept: "Aceptar"
+  partners: "Aliados"
+  cali: "Cali"
+  madrid: "Madrid"
+  normal_sale_price: "Precio normal de venta"
+  offered_sale_price: "Precio en oferta en Meetrico!"
+  all_promotions: "Todas las Promociones"
+  target_url: "Donde redirigir despues de llenar el formulario de contacto. LLENAR SOLO SI ES UNA ACTIVIDAD."
+  automatic_promo_response_email_subject: "Meetrico, tu oferta para %{promo_name}"
+  contact_message_email_subject: "Meetrico, %{name} interesado en %{promo_name}"

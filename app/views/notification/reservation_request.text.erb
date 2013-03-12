@@ -1,0 +1,20 @@
+Hola <%= @reservation.user.name.capitalize %>,
+
+Hemos recibido tu solicitud de reserva para el/la <%= @reservation.table.name %> en <%= @reservation.table.coworking_space.name
+%>. Tu horario de reserva es desde las <%=
+@reservation.start_time.strftime("%H:%M") %> hasta las <%=
+@reservation.end_time.strftime("%H:%M") %>.
+
+En breve recibirás un correo electrónico con la información de tu
+solicitud de reserva y un link para que procedas a realizar el pago.
+Recuerda comprobar la carpeta de "no deseado".
+
+La reserva no será válida hasta que no realices el pago.
+
+Gracias por utilizar Meetrico.
+
+Un saludo.
+
+--
+
+Equipo Meetrico

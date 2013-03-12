@@ -1,0 +1,46 @@
+<h1>Lista de Espacios</h1>
+
+<table class="table tablesorter" id="coworking_space-table" >
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Categoria</th>
+      <th>Green</th>
+      <th>Yellow</th>
+      <th>Red</th>
+      <th>No. de <br />Productos</th>
+      <th>Booked</th>
+      <th>Gallery</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @coworking_spaces.each do |coworking_space| %>
+      <tr>
+        <td><%= coworking_space.name  rescue '' %></td>
+        <td><%= coworking_space.category.name  rescue '' %></td>
+        <td><%= coworking_space.green rescue '' %></td>
+        <td><%= coworking_space.yellow rescue ''  %></td>
+        <td><%= coworking_space.red rescue ''  %></td>
+        <td><%= coworking_space.tables.length.to_s rescue ''  %></td>
+        <td><%= (coworking_space.tables.where(:booked => true)).length.to_s rescue ''  %></td>
+        <td><%= link_to 'Fotos', gallery_coworking_space_path(coworking_space) %></td>
+        <td><%= link_to 'Ver', coworking_space %></td>
+        <td><%= link_to 'Editar', edit_coworking_space_path(coworking_space) %></td>
+        <td><%= link_to 'Eliminar', coworking_space, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+<% if admin_signed_in? and not current_user.try(:owner?) %>
+<%= link_to 'New Coworking space', new_coworking_space_path %>
+<% end %>
+<script>
+  $(document).ready(function() {
+    $("#coworking_space-table").tablesorter();
+  });
+</script>

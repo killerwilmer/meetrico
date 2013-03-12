@@ -1,0 +1,136 @@
+<%= form_for(@reservation) do |f| %>
+  <div id="info">
+   <!-- <h3>La reserva comenzará a las <%= @table.next_available_hour.strftime("%H:00") %>h</h3> -->
+  </div>
+  <p>
+    <%= "¿Que dia quieres?" %><br />
+    <input type="text" id="attempt_init_date" name="attempt[init_date]" size="30" class="calendar required"/>
+  </p>
+  <p>
+    <%= "¿A que hora?" %><br />
+    <select id="attempt_init_time" name="attempt[init_time]" class="calendar required" >
+      <% 24.times do |t| %>
+        <%
+        show = ""
+        show30 = ""
+        if t < 10
+          show = "0" + t.to_s + ":00"
+          show30 = "0" + t.to_s + ":30"
+        else
+          show = t.to_s + ":00"
+          show30 = t.to_s + ":30"
+        end
+      %>
+        <option value="<%= show %>"><%= show %></option>
+        <option value="<%= show30 %>"><%= show30 %></option>
+      <% end %>
+
+    </select>
+  </p>
+  <p>
+    <%= f.label :duration, "¿Cuánto tiempo necesitas?" %><br />
+    <%= f.select :duration, [["1 hora",1], ["2 horas",2], ["3 horas",3], ["media jornada",4], ["jornada completa",10]], {},{:class => "calendar"} %>
+  </p>
+
+  <%= fields_for :user do |user|%>
+    <p>
+      <%= user.label :bio, "Cuéntanos a que te dedicas y quien eres..." %><br />
+      <%= user.text_area :bio, :size => "50x5" %>
+    </p>
+  <% end %>
+
+  
+  <%= f.hidden_field :start_time %>
+  <%= f.hidden_field :table_id, :value => params[:table_id] %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :state_id, :value => '1' %>
+
+  <div id="price_total" style="margin: 0px; padding: 0px;">
+    <table border="0" cellpadding="15" cellspacing="15" >
+      <tr>
+        <td>
+          <p >El importe total de tu reserva es de <span id="total"><%=  @table.item_category.price(@table.coworking_space) %></span>$</p>
+          
+        </td>
+        <td>
+          <div id="validation_result" style="">
+            <div id="valid-dates"></div>            
+            <div id="message"></div><br />
+            <div id="next_available_time"></div>
+            <div id="invalid-dates"></div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="actions">
+    <%= f.submit "Reservar" %>
+  </div>
+<% end %>
+<script>
+  $(document).ready(function() {
+    $('.calendar, #attempt_init_time').change(function() {
+      var init_date = $('#attempt_init_date').val();
+      var init_time = $('#attempt_init_time').val();
+      $('#reservation_start_time').val(init_date+" "+init_time);
+      
+      $("#total").html(<%= @table.item_category.price(@table.coworking_space) %> * $('#reservation_duration option:selected').val());
+    });
+
+    $('#new_reservation').validate();
+
+    $('.calendar, #reservation_recurrent, #options_num_times').live('change click keypress', function(){
+      var init_date = $('#attempt_init_date').val();
+      var init_time = $('#attempt_init_time').val();
+      var duration = $('#reservation_duration').val();
+      
+      $.ajax({
+        url: '/tables/validate_reservation_datetime',
+        dataType: "json",
+        data: {
+          init_date: init_date,
+          init_time: init_time,
+          id: <%= @table.id %>,
+          duration: duration
+        },
+        type: 'GET',
+        beforeSend: function(object){
+          $('#validation_result').hide();
+          $('#reservation_submit').attr('disabled', false);
+          if(init_date == "" || init_time == ""){
+            return false;
+          }
+        },
+        success: function(data){
+          $('#valid-dates').empty();
+          $('#invalid-dates').empty();
+          
+            
+          if(!$('#validation_result').is(':visible')){
+            $('#validation_result').show();
+            $('#message').empty();
+            $('#message').html(data.message);
+            $('#next_available_time').html("");
+
+            
+            
+          }
+          if(data.valid == false){
+            $('#reservation_submit').attr('disabled', true);
+            $('#next_available_time').html("Puedes reservar este item a partir de las: "+data.next_available_time);
+            $.each(data.invalid_dates, function(index, value){
+            $('#invalid-dates').append(value+"<br />");
+          })
+          }
+
+          
+        }
+      });
+    });
+
+
+    
+  });
+</script>
+
+

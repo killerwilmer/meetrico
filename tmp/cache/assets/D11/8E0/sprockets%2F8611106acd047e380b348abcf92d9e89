@@ -1,0 +1,10 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1359003554.159343:@value{	I"length:EFiŽI"digest;
+F"%641750a4360d1197e3c921bab11720deI"source;
+FI"Ž/* line 1, ../../../../app/assets/stylesheets/welcome/video_slider/video_slider.css.scss */
+#video_slider {
+  width: 100%;
+  height: 315px;
+}
+;
+FI"_version;
+F"%fe833df6a50e50a7685599179fe54a1c

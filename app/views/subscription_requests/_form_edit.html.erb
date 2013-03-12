@@ -1,0 +1,36 @@
+<%= form_for(@subscription_request) do |f| %>
+  <% if @subscription_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subscription_request.errors.count, "error") %> prohibited this subscription_request from being saved:</h2>
+      <ul>
+        <% @subscription_request.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Cuentanos sobre tí" %><br />
+    <%= f.text_area :description, :rows => 7, :cols => 70 %>
+  </div>
+  <div class="field">
+    <%= f.label "Dejanos un telefono" %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label "En que ciudad vives?" %><br />
+    <%= f.select(:city_id, City.all.collect {|p| [ p.name, p.id ] }, { :include_blank => false }) %>
+  </div>
+  <div class="field">
+    <%= f.label "Estado" %><br />
+    <%= f.select(:state, [['Pendiente',1],['Aprobada',2],['Rechazada',3]], { :include_blank => false }) %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :user_id %>
+  </div>
+  <br />
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

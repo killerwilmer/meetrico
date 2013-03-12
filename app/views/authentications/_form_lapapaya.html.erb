@@ -1,0 +1,47 @@
+<h2>Acceder</h2><br />
+<form id="lapapaya_login_form" action="/authentications/sign_in_lapapaya" method="POST">
+  <div class="field">
+    <label>Email</label><br />
+    <input id="lapapaya_email" name="lapapaya[email]" type="text" size="30"/>
+  </div>
+  <br />
+  <div class="field">
+    <label>Contrase&ntilde;a</label><br />
+    <input id="lapapaya_password" name="lapapaya[password]" type="password" size="30"/>
+  </div>
+  <div class="actions">
+    <input type="submit" id="lapapaya_submit" value="Entrar" />
+  </div>
+</form>
+
+<script type="">
+  
+  
+    
+  /*$('#lapapaya_submit').click(function(){
+    var lapapayaEmail = $('#lapapaya_email').val();
+    var lapapayaPassword = $('#lapapaya_password').val();
+    console.log("datos "+lapapayaEmail+" "+lapapayaPassword);
+  
+    $.ajax({
+      url: 'http://www.lapapaya.org/integracion/access.php',
+      dataType: "json",
+      data: {
+        email: lapapayaEmail,
+        password: lapapayaPassword
+      },
+      type: 'POST',
+      beforeSend: function(object){
+        if(lapapayaEmail == "" || lapapayaPassword == ""){
+          console.log('out false')
+          return false;
+        }
+      },
+      success: function(data){
+        console.log(data)
+      }
+    });
+  });*/
+    
+  
+</script>

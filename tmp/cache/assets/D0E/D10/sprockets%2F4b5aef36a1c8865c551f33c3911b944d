@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1359003547.851126:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%817cfdb9da2fcfde0b7e3318d27a867fI"logical_path;
+FI" welcome/about/teamwork.jpeg;
+TI"pathname;
+FI"8$root/app/assets/images/welcome/about/teamwork.jpeg;
+FI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"	9034;
+FI"digest;
+F"%b4c3154fb165e3bfa965b179838da9c6I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

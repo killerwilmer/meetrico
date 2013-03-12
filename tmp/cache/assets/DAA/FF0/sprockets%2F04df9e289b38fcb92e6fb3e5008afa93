@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343960481.802916:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%17fd09a212c67aeb4d7863231f7b3fb8I"logical_path;
+FI"7themes/default/fonts/museo700-regular-webfont.woff;
+TI"pathname;
+FI"T$root/app/assets/stylesheets/themes/default/fonts/museo700-regular-webfont.woff;
+FI"content_type;
+FI"application/octet-stream;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"
+28204;
+FI"digest;
+F"%bc9bfacafe7a405e701819c0dc362f5bI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

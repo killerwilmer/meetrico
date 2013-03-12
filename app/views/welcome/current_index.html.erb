@@ -1,0 +1,379 @@
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+  function initialize() {
+
+    var latlng = new google.maps.LatLng(40.385001,-3.687637);
+    var myOptions = {
+      zoom: 11,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+
+
+    var image = new google.maps.MarkerImage(
+    'images/marker.png',
+    new google.maps.Size(32,38),
+    new google.maps.Point(0,0),
+    new google.maps.Point(19,32)
+  );
+
+    var shape = {
+      coord: [18,0,22,1,24,2,26,3,27,4,29,5,30,6,32,7,34,8,34,9,34,10,35,11,36,12,36,13,37,14,37,15,37,16,37,17,37,18,37,19,37,20,37,21,37,22,37,23,36,24,35,25,34,26,33,27,32,28,30,29,28,30,26,31,12,31,10,30,9,29,7,28,6,27,5,26,5,25,3,24,3,23,2,22,2,21,1,20,1,19,0,18,0,17,0,16,0,15,0,14,0,13,0,12,0,11,0,10,0,9,0,8,0,7,1,6,2,5,3,4,3,3,4,2,5,1,7,0,18,0],
+      type: 'poly'
+    };
+
+    $.ajax({
+      url: "/coworking_spaces/list",
+      dataType: "json",
+      data: {
+        category: "category",
+        tag: "tag",
+        format: 'json',
+        index_list: true
+      },
+      success: function(data) {
+        $.each(data, function(k,v){
+          var cws = v.coworking_space;
+          var Latlng = new google.maps.LatLng(parseFloat(cws.lat),parseFloat(cws.long));
+          var marker = new google.maps.Marker({
+            position: Latlng,
+            map: map,
+            title: cws.name,
+            icon: image,
+            shape: shape
+          });
+
+          google.maps.event.addListener(marker, 'click', function() {
+            addIcon(cws);
+          });
+        });
+      }
+    });
+  }
+
+
+
+  function  addIcon(cws) {
+
+    var addrsLong = '<div class="info-window-content">'+cws.name+'<br /> <a href="/coworking_spaces/'+cws.id+'">detalle</a></div>';
+    images_desc = '';
+    $.ajax({
+      url: "/coworking_spaces/gallery",
+      dataType: "json",
+      data: {
+        id: cws.id
+      },
+      success: function(data) {
+        $('.info-window-content').append('<br /><a href="/coworking_spaces/'+cws.id+'"><img src="'+data[0].image.url_path+'" height="150" /></a>');
+      }
+    });
+
+    var myLatlng = new google.maps.LatLng(cws.lat, cws.long);
+    var myOptions = {
+      zoom: 15,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.HYBRID
+    }
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+    var image = new google.maps.MarkerImage(
+    'images/marker.png',
+    new google.maps.Size(32,38),
+    new google.maps.Point(0,0),
+    new google.maps.Point(19,32)
+  );
+
+    var shadow = new google.maps.MarkerImage(
+    'images/shadow.png',
+    new google.maps.Size(58,32),
+    new google.maps.Point(0,0),
+    new google.maps.Point(19,32)
+  );
+
+    var shape = {
+      coord: [18,0,22,1,24,2,26,3,27,4,29,5,30,6,32,7,34,8,34,9,34,10,35,11,36,
+        12,36,13,37,14,37,15,37,16,37,17,37,18,37,19,37,20,37,21,37,22,37,23,36,
+        24,35,25,34,26,33,27,32,28,30,29,28,30,26,31,12,31,10,30,9,29,7,28,6,27,
+        5,26,5,25,3,24,3,23,2,22,2,21,1,20,1,19,0,18,0,17,0,16,0,15,0,14,0,13,0,
+        12,0,11,0,10,0,9,0,8,0,7,1,6,2,5,3,4,3,3,4,2,5,1,7,0,18,0],
+      type: 'poly'
+    };
+
+    var marker2 = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title:cws.name,
+      icon: image,
+
+      shape: shape
+    });
+
+
+    //console.log(images_desc);
+    myInfoWindowOptions = {
+      content: addrsLong,
+      maxWidth: "600"
+    };
+
+    infoWindow = new google.maps.InfoWindow(myInfoWindowOptions);
+
+    google.maps.event.addListener(marker2, 'click', function() {
+      infoWindow.open(map,marker2);
+    });
+
+    google.maps.event.addListener(marker2, 'dragstart', function(){
+      infoWindow.close();
+    });
+
+    infoWindow.open(map,marker2);
+
+  }
+</script>
+
+<span class="text_index">Meetrico es una aplicación online que permite compartir espacios de trabajo, reducir desplazamientos y generar rentas compartidas. Si quieres conseguir un sitio de trabajo, o alquilar plazas en tu oficina este es tu espacio.</span>
+<br /><br />
+
+<!-- <div style="margin-left: auto; margin-right: auto;" align="center">
+  <iframe style="margin-left: auto; margin-right: auto;" src="http://player.vimeo.com/video/29491063?title=0&amp;byline=0&amp;portrait=0" width="660" height="400" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+  <p><a href="http://vimeo.com/29491063">Meetrico</a> from <a href="http://vimeo.com/user1914642">Felipe Velasquez</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
+</div> -->
+<span style="margin: 10px;">
+  <form id="new_reader" name="new_reader" action="/addtonewsletter" method="POST">
+    <h3>Dejanos tu correo para que recibas recomendaciones y actualizaciones</h3><br />
+    <input type="text" id="email_newsletter" name="email_newsletter" size="40" class="required email"  />
+    <button>Registrarme!</button>
+  </form>
+</span>
+<br />
+<br />
+<h3>Un buscador de aquellos espacios, que más encajen con tus gustos, intereses y necesidades.</h3>
+<br />
+<div id="filtros" >
+  <div id="filtro-tipo" style=" float: left;">
+    <label class="label">Tipo:</label><br />
+    <%= select 'filtro', 'tipo', [['Coworking', 'coworking_space']], {}, :class => "required select", :multiple => true %>
+  </div>
+  <div id="filtro-categoria" style=" float: left;">
+    <label class="label">Categoría:</label><br />
+    <%= select 'filtro', 'categoria', Category.all.collect {|p| [ p.name, p.id ] }, {}, :class => "required select", :multiple => true %>
+  </div>
+  <div id="filtro-precio" style=" float: left;">
+    <label>Precio:</label><br />
+    <%= select 'filtro', 'precio', [['0 a 3', '0-3'], ['3 a 6', '3-6'], ['6 a 10', '6-10'], ['10 a 15', '10-15'], ['15 a 40', '15-40'], ['40 a 70', '40-70'], ['70 a 120', '70-120'], ['120 a 200', '120-200'], ['200 en adelante', '200-']], {}, :class => "required select", :multiple => true %>
+  </div>
+</div>
+<br />
+<br />
+<div>
+  <button id="search">Buscar</button>
+</div>
+<br />
+
+
+
+<div id="promociones" class="view-content">
+  <div class="wrapper">
+    <strong>Espacios</strong>
+    <hr />
+    <div id="promos-espacios" class="views-row">
+    </div>
+  </div>
+  <br />
+  <!-- <div class="wrapper">
+    <strong>Actividades</strong>
+    <hr />
+    <div id="promos-actividades" class="views-row">
+
+    </div>
+  </div> -->
+</div>
+
+<!-- <div style="margin-left: auto; margin-right: auto;" align="center">
+  <iframe style="margin-left: auto; margin-right: auto;" src="http://player.vimeo.com/video/29491063?title=0&amp;byline=0&amp;portrait=0" width="820" height="500" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+  <p><a href="http://vimeo.com/29491063">Meetrico</a> from <a href="http://vimeo.com/user1914642">Felipe Velasquez</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
+</div> -->
+<br /><br />
+
+
+<br />
+<div id="marcomapa" class="redondeado">
+  <div id="mapa" style="display: inline-block;" >
+    <div id="map_canvas" style="width:680px; height:420px"></div>
+  </div>
+  <div class="fb-like-box" data-href="http://www.facebook.com/pages/Meetrico/219044214827940" data-height="420" data-width="265" data-show-faces="true" data-stream="false" data-header="true" style="background-color: #fff;"></div>
+</div>
+
+
+<script>
+  initialize();
+</script>
+
+
+<br /><br /><br />
+<script>
+  
+  $(document).ready(function(){
+    function query_coworking_spaces(categoryId, precio){
+    
+      $('#promos-espacios').empty();
+
+      $.ajax({
+        url: '/coworking_spaces/query',
+        dataType: "json",
+        data: {
+          name: 'all',
+          limit: 8,
+          category_id: categoryId,
+          precio: precio
+        },
+        type: 'GET',
+        beforeSend: function(jqXHR, settings){
+          $('#promos-espacios').html('<img src="/images/ajax_loader.gif" alt="" width="150"/>');
+        },
+        success: function(data){
+          $('#promos-espacios').empty();
+          if(data.length >= 1){
+            $.map(data, function(item) {
+              var mainImage = undefined;
+              if(item.image_url == ""){
+                mainImage = "&nbsp;";
+              }else{
+                mainImage = '<img src="'+item.image_url+'" alt="" title="" class="imagecache imagecache-thumb_agenda imagecache-default imagecache-thumb_agenda_default" width="222" height="103" />';
+              }
+
+              var content = $('<div class="pastilla-perfil">'+
+
+                '<a href="/coworking_spaces/'+item.id+'" title="Ir a '+item.name+'">'+
+                '<div class="views-field-field-entradillaagenda-value">'+
+                '<div class="field-content"><strong>'+item.name+'</strong><br />'+
+                item.user.user.name+'<br />'+
+                item.category.category.name+'<br />'+
+                '<div class="field-content"><a href="/coworking_spaces/'+item.id+'">'+item.address+'</a></div>+</div>'+
+                '</div>'+
+                '</a>'+
+
+                '<div class="views-field-field-imagena1-fid">'+
+                '<span class="field-content">'+mainImage+'</span>'+
+                '</div>'+
+
+                '<div class="views-field-title">'+
+                '<span class="field-content"><a href="/coworking_spaces/'+item.id+'">'+item.name+'</a></span>'+
+                '</div>'+
+
+                '<div class="views-field-tid-1">'+
+                '<div class="field-content"><a href="/coworking_spaces/'+item.id+'">'+item.address+'</a></div>'+
+                '</div>'+
+
+                '<div id="thermometer_icon" class="'+item.price+' views-field-tid">'+
+                '<span class="field-content"><a href="/coworking_spaces/'+item.id+'">'+item.green+' $/hora</a></span>'+
+                '<div class="vud-widget votacion-widget" id="widget-node-207">'+
+
+                '<span  class=" alternate-votes-display">'+item.tables_left+' productos'+
+                '</span>'+
+
+                '</div>'+
+                '</div>'+
+
+                '</div>');
+              $('#promos-espacios').append(content);
+              /*return {
+            label: item.razon,
+            value: item.id+": "+item.razon
+          }*/
+            });
+          }else{
+            $('#promos-espacios').html('<p><h3>La consulta no arrojo resultados.</h3></p>');
+          }
+          
+        }
+      });
+    }
+
+    function query_activities(categoryId, precio){
+      $('#promos-actividades').empty();
+      $.ajax({
+        url: '/activities/query',
+        dataType: "json",
+        data: {
+          name: 'all',
+          limit: 8,
+          category_id: categoryId,
+          precio: precio
+        },
+        type: 'GET',
+        success: function(data){
+          $.map(data, function(item) {
+            var mainImage = undefined;
+            if(item.image_url == null){
+              mainImage = "&nbsp;";
+            }else{
+              mainImage = '<img src="'+item.image_url+'" alt="" title="" class="imagecache imagecache-thumb_agenda imagecache-default imagecache-thumb_agenda_default" width="222" height="100" />';
+
+            }
+            //console.log( item.tables_left);
+            var disponibles = null;
+            if( item.tables_left != '0'){
+              disponibles = '<span class="alternate-votes-display">'+item.tables_left+' plazas, <a href="/reservations/new?activity_id='+item.id+'&table_id='+item.next_available_table.table.id+'">reserva ya!</a></span>';
+            }
+
+            if( item.tables_left == 0){
+              disponibles = '<span class="alternate-votes-display">sold out</span>';
+            }
+
+            var content = $('<div class="pastilla-perfil">'+
+
+              '<a href="/activities/'+item.id+'" title="Ir al evento">'+
+              '<div class="views-field-field-entradillaagenda-value">'+
+              '<div class="field-content"><strong>'+item.name+'</strong><br />'+
+              item.description+'<br />'+
+              item.category_name+'</div>'+
+              '</div>'+
+              '</a>'+
+              '<div class="views-field-field-imagena1-fid">'+
+              '<span class="field-content">'+mainImage+'</span>'+
+              '</div>'+
+
+              '<div class="views-field-title">'+
+              '<span class="field-content"><a href="/activities/'+item.id+'">'+item.name+'</a></span>'+
+              '</div>'+
+              '<div class="views-field-tid-1">'+
+              '<div class="field-content"><a href="/activities/'+item.id+'">'+item.address+'</a></div>'+
+              '</div>'+
+              '<div id="thermometer_icon" class="'+item.price+' views-field-tid">'+
+              '<div class="field-content"><a href="/activities/'+item.id+'">'+item.green+' $ </a>'+
+              '<span class="vud-widget votacion-widget" id="widget-node-207" >'+disponibles+'</span></div>'+
+              '</div>'+
+              '</div>');
+            $('#promos-actividades').append(content);
+            /*return {
+            label: item.razon,
+            value: item.id+": "+item.razon
+          }*/
+          });
+        }
+      });
+    }
+
+    $('#search').click(function(){
+      var filtroCategoria = $('#filtro_categoria').val();
+      var filtroPrecio = $('#filtro_precio').val();
+      var filtroTipo = $('#filtro_tipo').val();
+
+      //console.log(filtroCategoria+" "+filtroPrecio+" "+filtroTipo);
+      if(filtroTipo == "coworking_space"){
+        query_coworking_spaces(filtroCategoria, filtroPrecio);
+      }
+      
+      /*if(filtroTipo == "activity"){
+        query_activities(filtroCategoria, filtroPrecio);
+      }*/
+    });
+
+    query_coworking_spaces("", "");
+    //query_activities("", "");
+
+  });
+</script>

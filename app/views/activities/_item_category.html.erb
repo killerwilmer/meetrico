@@ -1,0 +1,1 @@
+<%= select("options", "item_category", options_for_select(item_categories.collect{|ic| [ic.name, ic.id]}), :include_blank => true) %>

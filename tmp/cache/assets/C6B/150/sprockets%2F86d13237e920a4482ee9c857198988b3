@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606786.237257:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%9494f8a9248816eff548e514a01f4006I"logical_path;
+FI"welcome/logo_utopic.png;
+TI"pathname;
+FI"4$root/app/assets/images/welcome/logo_utopic.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"	4454;
+FI"digest;
+F"%57818a24c304c697c8a41669083f5250I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

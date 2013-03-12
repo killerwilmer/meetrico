@@ -1,0 +1,38 @@
+%p
+  = "Hola #{@contact_message.try(:name).try(:titleize)}!"
+%p
+  Nos dejaste tu mail en Meetrico? bienvenid@!!
+  %br
+  Somos una red social que pretende reunir comunidades virtuales y hacer que se encuentren en la ciudad.
+  %br
+  En breve te contactaremos para que puedas saber más sobre la oferta que seleccionaste...
+  %br
+  = link_to "#{@contact_message.promo_name}.", @contact_message.calculated_url
+%p
+  En este link puedes acceder a otras promociones que tenemos para ti:
+  %br
+  = link_to t(:all_promotions), promotions_url
+
+%p
+  Si quieres conocer más de Meetrico!
+  %br
+  = link_to t(:conoce_meetrico), about_url
+  %br
+  = link_to t(:comparte_espacio), sharing_url
+
+%p
+  Correo enviado automaticamente por Meetrico :)
+  %br
+  Si tienes alguna duda o quieres saber más no dudes en contactarnos!!:
+
+%strong
+  Meetrico
+  %br
+  Felipe Velasquez
+  %br
+  572 8932289
+  %br
+  320 7217643
+  %br
+  pin: 29ac45c8
+

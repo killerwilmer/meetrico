@@ -1,0 +1,25 @@
+.promo-box
+  .promo-image
+    = link_to '#', :class => 'image modal-promo-show', data: {toggle: 'modal', item_category_id: item_category.id, url: item_category.redirection_url}, href: '#modal_newsletter_email_box' do
+      = image_tag item_category.image_url
+      .promo-overlay
+        %h3= item_category.workspace_name
+        %p= item_category.city
+      .promo-type
+        %h4= item_category.name
+  .promo-price
+    .discount
+      = label_tag nil, t("Otro")#cambio
+      %span= item_category.mi_precio
+      = label_tag nil, t(:discount)#cambio
+      %span= item_category.discount_percentage
+    .price
+      %ul
+        %li
+          %span= t(:price)
+          %span.number= item_category.price
+        %li
+          %span= t(:save)
+          = item_category.savings
+        %li.button
+          = link_to t(:tell_me_more), '#', :class => 'btn modal-promo-show', data: {toggle: 'modal', item_category_id: item_category.id, url: item_category.redirection_url}, href: '#modal_newsletter_email_box'

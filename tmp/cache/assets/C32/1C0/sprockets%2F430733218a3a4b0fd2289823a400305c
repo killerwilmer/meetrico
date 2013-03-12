@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606785.787345:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%76e7c42b826e728a21f729b540a9352cI"logical_path;
+FI"welcome/bg_footer.png;
+TI"pathname;
+FI"2$root/app/assets/images/welcome/bg_footer.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"
+52316;
+FI"digest;
+F"%2824eb7f46f525c72fbda8ac7cf2d51fI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

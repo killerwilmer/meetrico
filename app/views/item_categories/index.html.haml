@@ -1,0 +1,23 @@
+%h2= "Lineas de producto"
+%hr/
+%table#item-categories-table.table.tablesorter
+  %thead
+    %tr
+      %th Imagen / Icono
+      %th Nombre
+      %th Descripcion
+      %th= t(:normal_sale_price)
+      %th= t(:offered_sale_price)
+  %tbody
+    - for item_category in @item_categories
+      %tr
+        %td
+          %img.ic_index_icon{:alt => item_category.name, :src => item_category.image_url}/
+        %td= item_category.name
+        %td= item_category.description
+        %td= item_category.normal_price
+        %td= item_category.offered_price
+        %td= link_to "Detalles", item_category
+        %td= link_to "Editar", edit_item_category_path(item_category)
+        %td= link_to "Eliminar", item_category, :confirm => 'Are you sure?', :method => :delete
+%p= link_to "Nueva linea de productos", new_item_category_path

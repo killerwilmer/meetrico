@@ -1,0 +1,12 @@
+<h3><%= "Nueva Imagen" %></h3><br />
+
+<%= render 'form' %>
+
+<p><%= link_to "Volver a la lista", images_path %>
+&nbsp;|&nbsp;
+<% if @type == 'coworking_space' and not @resource.nil? %>
+<%= link_to "Editar Espacio", edit_coworking_space_path(@resource) %>
+<% elsif @type == 'table' and not @resource.nil?%>
+<%= link_to "Editar producto", edit_table_path(@resource) %>
+<% end %>
+</p>

@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Meetrico</title>
+    <meta name="Description" content="" />
+    <meta name="Keywords" content="" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'welcome/slicebox' %>
+    <%= stylesheet_link_tag 'welcome/welcome' %>
+
+    <%= stylesheet_link_tag 'jui/jquery-ui' %>
+    <%= stylesheet_link_tag 'jui/redmond/jquery-ui-1.8.5.custom' %>
+
+    <%= javascript_include_tag 'jquery', 'jquery-ui', 'rails', 'application' %>
+    <%= javascript_include_tag 'jcarousellite_1.0.1' %>
+    <%= javascript_include_tag 'jquery.tools.min' %>
+    <%= javascript_include_tag 'jquery.form' %>
+    <%= javascript_include_tag 'jquery.validate' %>
+    <%= javascript_include_tag 'welcome/modernizr-latest' %>
+    <%= javascript_include_tag 'welcome/jquery.slicebox.min' %>
+    <%= javascript_include_tag 'welcome/slicewelcome' %>
+
+    <%= yield(:stylesheets) %>
+    <%= yield(:javascripts) %>
+
+    <!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.gallery_view"></script>
+<![endif]-->
+    <%= #csrf_meta_tag
+    %>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="search_top">
+        <% if user_signed_in? %>
+          <%= link_to "Perfil", user_path(current_user), :class => "btn_admin" %>  <%= link_to "Cerrar sesión", destroy_user_session_path , :class => "btn_admin"%>
+        <% elsif admin_signed_in? %>
+          <%= link_to "Cerrar sesión", destroy_admin_session_path, :class => "btn_admin" %>
+        <% else %>
+          <%= link_to "Crear cuenta", new_user_registration_path, :class => "btn_admin" %>
+          <%= link_to "Acceder", new_user_session_path , :class => "btn_admin"%>
+          <%= #link_to "Iniciar sesión con Facebook", "/auth/facebook", :class => "facebook_login"
+          %>
+          <!-- o
+          <%= #link_to "Iniciar sesión con Lapapaya.org", "/auth/lapapaya", :class => "lapapaya_login"
+          %> -->
+        <% end %>
+
+      </div>
+      <div class="header">
+        <div class="logo"><a href="<%= root_path %>"><%= image_tag("welcome/logo.png", :size => "247x114") %></a></div>
+         <div class="nav">
+           <ul>
+                <%= link_to "Contacto", contact_path, :class => "item_nav" %>
+                <% if admin_signed_in? %>
+                  <%= link_to "Panel de control", "/admins", :class => "item_nav" %>
+                <% end %>
+
+                <% if has_reservations? current_user %>
+                  <%= link_to "My reservations ("+(how_many_reservations? current_user).to_s+")", active_reservations_path(current_user), :class => "item_nav" %>
+                <% end %>
+
+                <% if current_cart %>
+                  <%= link_to "My Cart ("+(current_cart.line_items.length).to_s+")", cart_path(current_cart), :class => "item_nav" %>
+                <% else %>
+                  no hay carro
+                <% end %>
+
+                <% if current_user and current_user.owner? %>
+                  <%= link_to "Mi espacio", "/owners", :class => "item_nav" %>
+                <% elsif current_user and not current_user.owner? and not admin_signed_in? %>
+                  <%= link_to "Comparte tu espacio", "/sharing", :class => "item_nav" %>
+                <% else %>
+                  <%= link_to "Conoce Meetrico", about_path, :class => "item_nav" %>
+                  <%= link_to "Comparte tu espacio", "/sharing", :class => "item_nav" %>
+                <% end %>
+
+
+           </ul>
+           <td valign="top">
+              <span style="float: right; margin-top: 10px;" >
+                <a href="http://www.facebook.com/pages/Meetrico/219044214827940"><img src="/images/icon-facebook.png" border="0" alt="Meetrico, espacios compartidos, descubrenos en facebook"/></a>
+                <!-- <a href="http://twitter.com/#!/publiteamco"><img src="/images/twitter-icon.png" border="0" alt="publiteam en twitter"/></a> -->
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- <div style="margin-left:25px; margin-top:-19px; -moz-transform:translate(3px,-7px); -webkit-transform:translate(3px,-7px); -o-transform:translate(3px,-7px); padding-left:10px;">  <g:plusone size="medium"></g:plusone></div> -->
+              </span>
+          </td>
+         </div>
+      </div>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+
+      <%= yield %>
+
+    </div>
+    <div id="footer" >
+      <div class="content_footer">
+        <%= render :partial => "layouts/footer" %>
+      </div>
+    <div class="copyright">Copyright Meetrico 2011. Space sharing Developed by Lapapaya system</div>
+    </div>
+
+  </body>
+</html>

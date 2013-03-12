@@ -1,0 +1,22 @@
+- content_for :javascripts do
+  = javascript_include_tag 'welcome/video_slider/jquery.anythingslider'
+  = javascript_include_tag 'welcome/video_slider/jquery.anythingslider.video.min'
+  = javascript_include_tag 'welcome/video_slider/video_slider'
+
+- content_for :stylesheets do
+  = stylesheet_link_tag 'welcome/video_slider/anythingslider'
+  = stylesheet_link_tag 'welcome/video_slider/video_slider'
+
+%ul#video_slider
+  %li
+    %object{:height => "315", :width => "560"}
+      %param{:name => "movie", :value => "http://www.youtube.com/v/R1dHiYBJZnM?version=3&hl=en_US"}
+      %param{:name => "allowFullScreen", :value => "true"}
+      %param{:name => "allowscriptaccess", :value => "always"}
+      %embed{:allowfullscreen => "true", :allowscriptaccess => "always", :height => "315", :src => "http://www.youtube.com/v/R1dHiYBJZnM?version=3&hl=en_US", :type => "application/x-shockwave-flash", :width => "560"}
+  %li
+    %object{:height => "315", :width => "560"}>
+      %param{:name => "movie", :value => "http://www.youtube.com/v/tR40-GPaR_E?version=3&hl=en_US"}
+      %param{:name => "allowFullScreen", :value => "true"}
+      %param{:name => "allowscriptaccess", :value => "always"}
+      %embed{:allowfullscreen => "true", :allowscriptaccess => "always", :height => "315", :src => "http://www.youtube.com/v/tR40-GPaR_E?version=3&hl=en_US", :type => "application/x-shockwave-flash", :width => "560"}

@@ -1,0 +1,31 @@
+<h3>Solicitud de suscripción</h3>
+
+<p>
+  <strong>Descripción:</strong><br />
+  <%= @subscription_request.description %>
+  <br />
+</p>
+<p>
+  <strong>Telefono:</strong>
+  <%= @subscription_request.phone %>
+  <br />
+</p>
+<p>
+  <strong>Solicitante:</strong>
+  <%= @subscription_request.user.name %>
+  <br />
+</p>
+<p>
+  <strong>Ciudad:</strong>
+  <%= @subscription_request.city.name %>
+  <br />
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= "Pendiente" if @subscription_request.state == 1 %>
+  <%= "Aprobada" if @subscription_request.state == 2 %>
+  <%= "Rechazada" if @subscription_request.state == 3 %>
+  <br />
+</p>
+

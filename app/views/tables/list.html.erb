@@ -1,0 +1,33 @@
+<h1>Listing coworking_spaces +++</h1>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Green</th>
+    <th>Yellow</th>
+    <th>Red</th>
+    <th>Tables</th>
+    <th>Booked</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @coworking_spaces.each do |coworking_space| %>
+  <tr>
+    <td><%= coworking_space.name %></td>
+    <td><%= coworking_space.green %></td>
+    <td><%= coworking_space.yellow %></td>
+    <td><%= coworking_space.red %></td>
+    <td><%= coworking_space.tables.length.to_s %></td>
+    <td><%= (coworking_space.tables.where(:booked => true)).length.to_s %></td>
+    <td><%= link_to 'Show', coworking_space %></td>
+    <td><%= link_to 'Edit', edit_coworking_space_path(coworking_space) %></td>
+    <td><%= link_to 'Destroy', coworking_space, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Coworking space', new_coworking_space_path %>

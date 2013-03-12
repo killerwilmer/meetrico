@@ -1,0 +1,169 @@
+<div id="activities-wrapper">
+
+  <%= form_for @activity, :html => { :class => "form"} do |f| %>
+
+    <div class="field">
+      <%= f.label :name, 'Nombre del evento o actividad', :class => 'label' %>
+      <%= f.text_field :name, :class => "required text_field", :minlength => "3" %>
+    </div>
+
+    <br /><div class="field">
+      <%= f.label :description, 'De que se trata?', :class => 'label' %>
+      <%= f.text_area :description, :size => "40x4", :class => "required" %>
+    </div>
+    <div>
+      <table width="60%" >
+        <tr>
+          <td>
+            <h4>Configuración:</h4>
+            <hr />
+            <br /><div class="field">
+              <label class="label">Espacio</label>
+              <% if @coworking_spaces %>
+                <%  if @coworking_spaces.length > 1 %>
+                  <%= select_tag("coworking_space[id]", options_for_select(@coworking_spaces.collect {|p| [ p.name, p.id ] }), :class => "required select", :minlength => "1") %>
+                <% end %>
+                <%  if @coworking_spaces.length == 1 %>
+                  <h4><%= @coworking_spaces.first.name %></h4>
+                  <%= f.hidden_field :coworking_space_id, :class => 'required', :value => @coworking_spaces.first.id.to_s %>
+                <% end %>
+
+                <% if @coworking_spaces.length < 1 %>
+                  <p> Este usuario no es propietario de espacios, por lo tanto no puede crear actividades.</p>
+                <% end %>
+              <% else %>
+                <p> Este usuario no es propietario de ningun espacio, por lo tanto no puede crear actividades.</p>
+              <% end %>
+            </div>
+
+            <br /><div class="field">
+              <label class="label">Linea de producto</label>
+              <div id="reservation_item_category" style="">
+                <%= render :partial => "/activities/item_category", :locals => {:item_categories => @item_categories }%>
+              </div>
+            </div>
+            <br /><div class="field">
+              <label class="label">Producto</label>
+              <div id="reservation_table" style="">
+                <%= render :partial => "/activities/tables_by_item_category", :locals => {:tables => @tables }%>
+              </div>
+            </div>
+
+            <br /><div class="field">
+
+              <%= f.label :num_tickets, 'No. Cupos', :class => 'label'  %>
+              <%= f.number_field :num_tickets, :class => "required text_field" %>
+
+            </div>
+            <br /><div class="field">
+
+              <%= f.label :num_owner_tickets, 'No. Cupos reservados para el propietario', :class => 'label'  %>
+              <%= f.number_field :num_owner_tickets, :class => "required text_field" %>
+
+            </div>
+            <% unless @activity.new_record?%>
+              <br /><div class="field">
+
+                <%= f.label :num_available_tickets, 'No. Cupos disponibles para reserva publica', :class => 'label'  %>
+                <%= f.number_field :num_available_tickets, :class => "required text_field", :readonly => true %>
+
+              </div>
+            <% end %>
+          </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td >
+            <h4>Tarifas:</h4>
+            <hr />
+            <br /><div class="field">
+              <%= f.label :green, 'Verde', :class => 'label'  %>
+              <%= f.text_field :green, :class => "required text_field" %>
+            </div>
+            <br /><div class="field">
+              <%= f.label :yellow, 'Amarilla', :class => 'label'  %>
+              <%= f.text_field :yellow, :class => "required text_field" %>
+            </div>
+            <br /><div class="field">
+              <%= f.label :red, 'Roja', :class => 'label'  %>
+              <%= f.text_field :red, :class => "required text_field" %>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <br /><div class="field">
+      <%= f.label :start_date, 'Fecha inicio', :class => 'label' %>
+      <%= f.text_field :start_date, :class => 'calendar text_field', :value => (@activity.start_date.strftime("%Y-%m-%d") if @activity.start_date)  %>
+    </div>
+    <br /><div class="field">
+      <label class="label"><%= "¿A que hora?" %></label><br />
+      <select id="attempt_init_time" name="attempt[init_time]" class=" required calendar" >
+        <% 24.times do |t| %>
+          <%
+          show = ""
+          if t < 10
+            show = "0" + t.to_s + ":00"
+          else
+            show = t.to_s + ":00"
+          end
+        %>
+          <option value="<%= show %>" <%= 'selected' if show == @attempt_init_time %> > <%= show %></option>
+        <% end %>
+
+      </select>
+
+    </div>
+    <br /><div class="field">
+      <%= f.label :duration, 'Duración (en horas)', :class => 'label' %>
+      <%= f.text_field :duration, :class => 'required  text_field' %>
+    </div>
+
+    <% if (current_user.try(:owner?) or admin_signed_in?) %>
+      <br /><div class="field">
+        <div id="recurrent-reservations-wrapper">
+          <span id="recurrent-check-wrapper"><%= f.check_box :recurrent %> <%= f.label :recurrent, "repetir esta reserva" %> </span>
+          <span id="recurrent-type-wrapper" style="display:none;"> en forma:
+            <%= select('options', 'recurrent_type', options_for_select([["Diaria","daily"], ["Semanal", "weekly"], ["Mensual", "monthly"]]),{}, {:class => "calendar"}) %>
+            <span ><%= text_field 'options', 'num_times', :size => "2"  %> veces</span>
+          </span>
+        </div>
+      </div>
+    <% end %>
+    <br /><div class="field">
+      <%= f.label :main_image_url, 'URL de la imagen/flyer o publicidad', :class => 'label' %>
+      <%= f.text_area :main_image_url, :class => 'required  text_field', :size => "40x4" %>
+    </div>
+    <div class="field">
+      <div id="validation_result" style="">
+        <div id="valid-dates"></div>
+        <div id="message"></div><br />
+        <div id="next_available_time"></div>
+        <div id="invalid-dates"></div>
+      </div>
+    </div>
+    <%= hidden_field "options", "valid_dates" %>
+    <br /><div class="field"><%= f.submit %></div>
+  <% end %>
+
+</div>
+
+<script>
+  $(document).ready(function(){
+    
+    $('#activity_recurrent').change(function () {
+      if ($(this).is(':checked')) {
+        $('#recurrent-type-wrapper').show();
+        $(this).attr("checked", true);
+      }else{
+        $(this).checked = false;
+        $('#recurrent-type-wrapper').hide();
+        $('#options_recurrent_type').val("");
+        $('#options_valid_dates').val("");
+        $("#new_activity").resetForm();
+        $('#valid-dates').empty();
+        $('#invalid-dates').empty();
+        $('#message').empty();
+      }
+    });
+  });
+</script>

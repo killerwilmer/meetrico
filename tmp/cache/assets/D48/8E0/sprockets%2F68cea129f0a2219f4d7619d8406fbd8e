@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343960482.525095:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%44b77440a80bcef16c0461b9317029c2I"logical_path;
+FI"$themes/default/images/arrow.png;
+TI"pathname;
+FI"A$root/app/assets/stylesheets/themes/default/images/arrow.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"349;
+FI"digest;
+F"%f716be10edf9849ec6faa0f606b021baI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

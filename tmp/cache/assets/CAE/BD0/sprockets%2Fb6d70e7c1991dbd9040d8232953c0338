@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1359003554.321022:@value{	I"length:EFiÖI"digest;
+F"%c61b994b98351d2ca498fa3f02d20620I"source;
+FI"Ö(function() {
+
+  $(function() {
+    return $('#video_slider').anythingSlider({
+      theme: 'default',
+      buildNavigation: false,
+      buildStartStop: false,
+      hashTags: false
+    });
+  });
+
+}).call(this);
+;
+FI"_version;
+F"%1a069a72c7a9f87127d797e1678076d1

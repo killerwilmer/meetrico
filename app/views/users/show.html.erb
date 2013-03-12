@@ -1,0 +1,12 @@
+<% if @user.avatar != nil and @user.avatar != '' %>
+  <div class="user_avatar"><%= image_tag(@user.avatar.gsub("square", "large"), :width => "200") %></div>
+<% end %>
+<div id="user_info">
+  <h1><%= @user.name %></h1>
+  <p>
+    <% if not @user.bio.nil? and @user.bio != '' %>
+      <%= raw(@user.bio.gsub("\n", "<br/>")) %>
+    <% end %>
+  </p>
+  <%= link_to "Volver", :back %> | <%= link_to "Actualizar mi perfil", edit_user_path(@user) %>
+</div>

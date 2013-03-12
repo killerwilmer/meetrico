@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1359003556.3697212:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%a861592e83eedde844926eb80e71fce2I"logical_path;
+FI"anythingslider/default.png;
+TI"pathname;
+FI"7$root/app/assets/images/anythingslider/default.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"
+15403;
+FI"digest;
+F"%652b0f27bb6521f321c7dc1769481d64I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

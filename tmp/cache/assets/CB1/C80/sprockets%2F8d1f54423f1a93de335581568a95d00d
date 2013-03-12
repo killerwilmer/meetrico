@@ -1,0 +1,22 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1362465469.349372:@value{	I"length:EFiI"digest;
+F"%0bd6a4031618bbb0bb0a6a61b1f4d85dI"source;
+FI"$(document).ready(function(){
+//    $('.aproving').live('click',function(){
+//        var reservation_id = $(this).attr('data-reservation-id');
+//        $.ajax({
+//            url: '/reservations/'+reservation_id+'/aprove',
+//            dataType: "json",
+//            type: 'GET',
+//            beforeSend: function(object){
+//
+//            },
+//            success: function(data){
+//                $('#notice').html(data.aproved);
+//                $('#notice').dialog();
+//            }
+//        });
+//    });
+});
+;
+FI"_version;
+F"%356c8cbda35c54fd9c02a0d8837562f6

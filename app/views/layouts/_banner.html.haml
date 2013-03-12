@@ -1,0 +1,30 @@
+- content_for :javascripts do
+  = javascript_include_tag 'welcome/welcome'
+#main-slider
+  #activity_search_form.hidden-phone
+    = form_for :activity_search, :html => { :class => 'well' } do |f|
+      -#= f.text_field :tags, placeholder: t(:what_are_you_looking_for)
+      .email-wrapper
+        = t(:slogan)
+      -#  = f.email_field :email, placeholder: t(:email_placeholder)
+      -#  = label_tag nil, :class => 'checkbox', :for => 'activity_search_receive_notifications' do
+      -#    = t(:wish_to_receive_notifications)
+      -#    = f.check_box :receive_notifications
+      -#= f.submit t(:go), class: 'btn btn-success'
+  #banner_slider.carousel.slide
+    .carousel-inner
+      .active.item
+        = image_tag 'welcome/banner/slider1.jpg'
+      .item
+        = image_tag 'welcome/banner/slider2.jpg'
+      .item
+        = image_tag 'welcome/banner/slider3.jpg'
+      .item
+        = image_tag 'welcome/banner/slider4.jpg'
+      .item
+        = image_tag 'welcome/banner/slider5.jpg'
+
+    %a.left.carousel-control{"data-slide" => "prev", :href => "#banner_slider"} ‹
+    %a.right.carousel-control{"data-slide" => "next", :href => "#banner_slider"} ›
+#slogan.well.visible-phone
+  = t(:slogan)

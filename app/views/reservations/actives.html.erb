@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<% @reservations.each do |reservation| %>
+  <p>
+    <b>Fecha-Hora de inicio:</b>
+    <%= reservation.start_time.strftime('%d %b de %Y - %I:%M%p') %>
+  </p>
+
+  <p>
+    <b>Duracion:</b>
+    <%= reservation.duration rescue ''  %>
+  </p>
+
+  <p>
+    <b>Biografia del propietario:</b>
+    <%= reservation.user.bio rescue ''  %>
+  </p>
+
+  <p>
+    <b>Email del propietario:</b>
+    <%= reservation.user.email rescue ''  %>
+  </p>
+
+  <p>
+    <b>Estado:</b>
+    <%= reservation.state.name rescue ''  %>
+  </p>
+
+  <p>
+    <b>Espacio:</b>
+    <%= reservation.table.coworking_space.name rescue '' %>
+  </p>
+  <hr />
+  <br /><br />
+<% end %>
+

@@ -1,0 +1,21 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343960842.75004:@value{	I"length:EFiI"digest;
+F"%5071f7469ebf7543ab3f0aafab95efd4I"source;
+FI"(function() {
+
+  $(function() {
+    $('.modal-promo-show').on('click', function() {
+      var redirection_url;
+      $('#contact_message_item_category_id').val($(this).data('item-category-id'));
+      redirection_url = $(this).data('url');
+      $('#modal_newsletter_email_box').data('url', redirection_url);
+      return $('#contact_message_url').val(redirection_url);
+    });
+    return $('#modal_newsletter_email_box').on('hidden', function() {
+      return window.location.replace($(this).data('url'));
+    });
+  });
+
+}).call(this);
+;
+FI"_version;
+F"%ec8d33d901395110296cab08804728df

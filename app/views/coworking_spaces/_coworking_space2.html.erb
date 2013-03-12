@@ -1,0 +1,158 @@
+<%= stylesheet_link_tag 'fullcalendar/fullcalendar' %>
+
+<%= javascript_include_tag 'fullcalendar/fullcalendar.min' %>
+
+
+<script type='text/javascript'>
+    $(document).ready(function() {
+
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,basicWeek,basicDay'
+            },
+            firstDay: 1,
+            aspectRatio: 3.2,
+            editable: false,
+            events: "/reservations/list.json?coworking_space_id=<%= @coworking_space.id.to_s %> ",
+            loading: function(bool) {
+                if (bool) $('#loading').show();
+                else $('#loading').hide();
+            }
+
+        });
+
+        $('#activities_calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,basicWeek,basicDay'
+            },
+            firstDay: 1,
+            aspectRatio: 3.2,
+            editable: false,
+            events: "/activities/list.json?coworking_space_id=<%= @coworking_space.id.to_s %> ",
+            loading: function(bool) {
+                if (bool) $('#loading').show();
+                else $('#loading').hide();
+            }
+
+        });
+
+    });
+</script>
+<style type='text/css'>
+
+
+    #loading {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+
+    #calendar,#activities_calendar {
+        width: 850px;
+        margin: 0 auto;
+    }
+
+    .slider{
+        max-height: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .slider ul li{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+</style>
+<div class="container-fluid">
+  <div id="loading" style='display:none'>loading...</div>
+  <div id="info">
+    <!-- <div id="thermometer" class="<%= thermometer_css %>">
+    <h3>
+  <% if @coworking_space.tables_left('resource') == 0 %>
+    No hay productos disponibles
+  <% else %>
+    <% if @coworking_space.tables_left('resource') == 1 %>
+        Queda <%= @coworking_space.tables_left('resource') %> producto a...</h3>
+    <% else %>
+        Quedan <%= @coworking_space.tables_left('resource') %> productos a...</h3>
+    <% end %>
+      <ul>
+        <li class="price <%= thermometer_css %>"><%= @coworking_space.price %>$ hora</li>
+      </ul>
+  <% end %>
+
+    <p><%= link_to "¿Qué es esto?", about_path %></p>
+  </div> -->
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <h2><%= @coworking_space.name %></h2>
+    </div>
+  </div>
+  <div id="space" class='row-fluid' >
+    <div id="gallery-wrapper" class="span8">
+
+      <% if @coworking_space.images.size > 0 %>
+          <div class="slider" >
+            <button class="prev"><<</button>
+            <button class="next">>></button>
+            <ul>
+              <% for image in @coworking_space.images %>
+                  <% data = FastImage.size(image.url_path) %>
+                  <% if (not data.nil?) and data.size > 0 %>
+                      <% if (data[0]).to_i >= 500 %>
+                          <li><img src="<%= image.url_path%>" alt="<%= @coworking_space.name+"-"+image.id.to_s %>" height="500" /></li>
+                      <% elsif (data[1]).to_i >= 500 %>
+                          <li><img src="<%= image.url_path%>" alt="<%= @coworking_space.name+"-"+image.id.to_s %>" width="500" /></li>
+                      <% end %>
+                  <% end %>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+    </div>
+    <div class="span4">
+      <% if @coworking_space.description %>
+          <div class="cws_description"  id="space_description" >
+            <h4>Descripcion</h4>
+            <hr />
+            <%= @coworking_space.description  %>
+          </div>
+      <% else %>
+          &nbsp;
+      <% end %>
+    </div>
+
+    <ul>
+      <% @coworking_space.item_categories.each do |category| %>
+          <%= render :partial => 'coworking_spaces/item_category', :locals => {:category => category, :coworking_space => @coworking_space} %>
+      <% end %>
+    </ul>
+
+
+
+  </div>
+  <br />
+  <h2>Disponibilidad de espacio en <%= @coworking_space.name %> </h2>
+  <div id='calendar'></div>
+
+  <h2>Actividades en <%= @coworking_space.name %> </h2>
+  <div id='activities_calendar'></div>
+</div>
+<script type='text/javascript'>
+    $(document).ready(function() {
+
+        $(".slider").jCarouselLite({
+            auto: 6000,
+            speed: 3000,
+            btnNext: ".slider .next",
+            btnPrev: ".slider .prev",
+            visible: 1
+        });
+    });
+</script>

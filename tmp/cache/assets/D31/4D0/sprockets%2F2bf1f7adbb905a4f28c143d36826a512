@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606785.233595:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%f9fc7a13d6a1fead85222119d27adb1fI"logical_path;
+FI""welcome/lapasiondelfutbol.jpg;
+TI"pathname;
+FI":$root/app/assets/images/welcome/lapasiondelfutbol.jpg;
+FI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"
+78464;
+FI"digest;
+F"%39116e6a9d13c2f8ef79d60026b94cfbI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

@@ -1,0 +1,10 @@
+Hola <%= @reservation.user.name.capitalize %>,
+
+Tu reserva de las <%= @reservation.start_time.strftime("%H:%M") %> a las <%= @reservation.end_time.strftime("%H:%M") %> para el producto <%= @reservation.table.name %> está confirmada.
+
+Muchas gracias por confiar en Meetrico, la red lider de espacios compartidos.
+
+Un saludo
+
+--
+The Meetrico Team.

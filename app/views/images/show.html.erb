@@ -1,0 +1,13 @@
+<%= "Image" %>
+
+<p>
+  <strong>Url Path:</strong>
+  <%= @image.url_path %><br />
+  <img src="<%= @image.url_path %>" width="500" />
+</p>
+
+<p>
+  <%= link_to "Editar", edit_image_path(@image) %> |
+  <%= link_to "Eliminar", @image, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Ver todas", images_path %>
+</p>

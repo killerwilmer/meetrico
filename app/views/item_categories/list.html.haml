@@ -1,0 +1,12 @@
+- content_for :javascripts do
+  = javascript_include_tag 'coworking_spaces/show'
+.container-fluid
+  .row-fluid
+    %h2.centered= t(:all_promotions)
+  - @promos.in_groups_of(3, false) do |row|
+    .row-fluid.promo
+      - row.each do |promo|
+        .span4
+          = render 'welcome/promo/promo', item_category: ItemCategoryDecorator.decorate(promo)
+
+= render 'shared/contact_box', contact_message: @contact_message

@@ -1,0 +1,26 @@
+= form_for @item_category do |f|
+  %p
+    = f.label :name, "Nombre"
+    %br/
+    = f.text_field :name
+  %p
+    = f.label :image_url, "Url de Imagen o Icono"
+    %br/
+    = f.text_area :image_url, :size => "40x4"
+  %p
+    = f.label :description, "Descripción"
+    %br/
+    = f.text_area :description, :size => "40x4"
+  %p
+    = f.label :normal_price, t(:normal_sale_price)
+    %br/
+    = f.text_field :normal_price
+  %p
+    = f.label :offered_price, t(:offered_sale_price)
+    %br/
+    = f.text_field :offered_price
+  %p
+    = f.label :target_url, t(:target_url)
+    %br/
+    = f.text_field :target_url
+  %p= f.submit

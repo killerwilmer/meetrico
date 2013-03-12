@@ -1,0 +1,25 @@
+<%="Products" %>
+
+<% for product in @products %>
+  <div class="product">
+    <h3>
+      <%= link_to h(product.name), product %>
+      <%= number_to_currency(product.price) %>
+    </h3>
+    <div class="actions">
+      <%= link_to "Add to Cart", line_items_path(:product_id => product), :method => :post %>
+    </div>
+  </div>
+<% end %>
+
+<% for table in @tables %>
+<div class="product">
+    <h3>
+      <%= link_to h(table.id), table %>
+      <%= number_to_currency(table.coworking_space.price) %>
+    </h3>
+    <div class="actions">
+      <%= link_to "Add to Cart", line_items_path(:table_id => table), :method => :post %>
+    </div>
+  </div>
+<% end %>

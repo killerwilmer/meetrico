@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1343606785.025381:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%d1138c045e73a3766ecca6ceba23c21dI"logical_path;
+FI"welcome/banner/slider3.jpg;
+TI"pathname;
+FI"7$root/app/assets/images/welcome/banner/slider3.jpg;
+FI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2012-07-29T18:32:43-05:00;
+FI"length;
+FI"417490;
+FI"digest;
+F"%4df5273ea73c232a582ce0bbace7aae8I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

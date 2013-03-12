@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1362446157.389964:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%2ebfe06d28183210b4852143b242f750I"logical_path;
+FI"0themes/default/images/button-background.png;
+TI"pathname;
+FI"M$root/app/assets/stylesheets/themes/default/images/button-background.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-07-29T16:32:43-07:00;
+FI"length;
+FI"	6130;
+FI"digest;
+F"%2bd54814b06a7efdf8a0c3c8cc90953dI"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

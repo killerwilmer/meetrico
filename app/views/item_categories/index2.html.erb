@@ -1,0 +1,28 @@
+<h2><%="Lineas de producto" %></h2>
+<hr />
+
+<table class="table tablesorter" id="item-categories-table">
+  <thead>
+    <tr>
+      <th>Imagen / Icono</th>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for item_category in @item_categories %>
+      <tr>
+        <td>
+          <img src="<%= item_category.image_url %>" alt="<%= item_category.name %>" class="ic_index_icon"/>
+        </td>
+        <td><%= item_category.name %></td>
+        <td><%= item_category.description %></td>
+        <td><%= link_to "Detalles", item_category %></td>
+        <td><%= link_to "Editar", edit_item_category_path(item_category) %></td>
+        <td><%= link_to "Eliminar", item_category, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "Nueva linea de productos", new_item_category_path %></p>

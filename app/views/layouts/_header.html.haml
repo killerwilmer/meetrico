@@ -1,0 +1,22 @@
+.navbar
+  .navbar-inner
+    = link_to (image_tag 'welcome/logo.png', alt: 'Meetrico'), root_path, class: 'logo'
+    %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+
+    .nav-collapse
+      %ul.nav.pull-right
+        %li= link_to t(:conoce_meetrico), about_path
+        %li= link_to t(:comparte_espacio), sharing_path
+        %li= link_to t(:registrate), new_user_registration_path
+        - if current_user
+          %li= link_to t(:logged_in_as, username: "#{current_user.name} (User)"), list_coworking_spaces_path, class: 'logged_in'
+          %li= link_to t(:log_out), destroy_user_session_path, class: 'logout'
+        - elsif current_admin
+          %li= link_to t(:logged_in_as, username: "#{current_admin.name} (Admin)"), list_coworking_spaces_path, class: 'logged_in'
+          %li= link_to t(:log_out), destroy_admin_session_path, class: 'logout'
+        - else
+          %li= link_to t(:iniciar_sesion), new_user_session_path
+          %li= link_to t(:admin), new_admin_session_path

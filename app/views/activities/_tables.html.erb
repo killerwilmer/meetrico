@@ -1,0 +1,43 @@
+<table class="table" border="0">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Usuario</th>
+    <th>Espacio</th>
+    <th>Propietario</th>
+    <th>Fecha Creación</th>
+    <th>Estado</th>
+    <th>Fotos</th>
+    <th colspan="5">Acciones</th>
+
+  </tr>
+
+  <% @tables.each do |table| %>
+    <% reserva = nil %>
+    <% if table.booked? %>
+      <% reserva = Reservation.where(:table_id => table).first %>
+    <% end %>
+    <tr>
+      <td><%= table.id.to_s %></td>
+      <td><%= table.name %></td>
+      <td><%= reserva.user.name unless reserva.nil? %></td>
+      <td><%= table.coworking_space.name rescue '' %></td>
+      <td><%= table.coworking_space.user.name rescue ''%></td>
+      <td><%= table.created_at.strftime('%d %b de %Y - %I:%M%p') rescue ''%></td>
+      <td><%= "reservado" if table.booked? rescue ''%><%= "disponible" if not table.booked? rescue ''%></td>
+      <td><%= table.images.length.to_s rescue '0'%></td>
+      <% if table.booked? %>
+        <td ><%= link_to 'Ver Reserva', reservation_path(reserva.id) %></td>
+      <% else %>
+        <td>&nbsp;</td>
+      <% end %>
+      <td><%= link_to 'Ver', table %></td>
+      <td><%= link_to 'Editar', edit_table_path(table) %></td>
+      <td><%= link_to 'Eliminar', table, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= will_paginate @tables %>

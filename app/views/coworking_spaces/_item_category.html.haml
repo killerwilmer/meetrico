@@ -1,0 +1,28 @@
+- content_for :javascripts do
+  = javascript_include_tag 'coworking_spaces/show'
+.category_wrapper
+  - if item_category
+    #thermometer_icon.green
+    .item-category-title
+      = item_category.try(:name).try(:capitalize)
+    .left-side-wrapper
+      - if item_category.image_url and item_category.image_url != ""
+        %img.ic_cws_icon{:src => item_category.image_url}/
+      - else
+        %img{:src => "/images/logo3.png", :width => "150"}/
+    .right-side-wrapper
+      .num-item-by-category
+        - if item_category.tables_left_by_coworking_space('resource', coworking_space) <= 0
+          0
+        - else
+          = item_category.tables_left_by_coworking_space('resource', coworking_space)
+      %div
+        items disponibles
+      %div{:class => "item-category-price #{item_category_thermometer_css(item_category, coworking_space)}"}
+        Precio:
+        $ #{item_category.mutable_price(coworking_space)}
+      .wrapper_view_category_link
+        -#%button{"data-url" => list_coworking_space_item_category_path(coworking_space, category)} Cuéntame más...
+        = link_to t(:tell_me_more), '#', :class => 'btn modal-promo-show', data: {toggle: 'modal', item_category_id: item_category.id, url: item_category.redirection_url }, href: '#modal_newsletter_email_box'
+
+= render 'shared/contact_box', contact_message: @contact_message

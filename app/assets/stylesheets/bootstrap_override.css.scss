@@ -1,0 +1,423 @@
+$linkColor: #4955DA;
+$linkColorHover: #6a6fb8;
+$navbarLinkColor: #4955DA;
+$navbarLinkColorHover: #6a6fb8;
+
+$loggedInLinkColor: #158800;
+$loggedInLinkColorHover: #4BB833;
+
+$logoutInLinkColor: #b89800;
+$logoutInLinkColorHover: #ffcb00;
+
+$fontColor: #4BB833;
+$yellowColor: #FFFFF5;
+
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+.container-fluid {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.navbar {
+  margin: 0;
+}
+
+.carousel-control {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#main-slider{
+  position: relative;
+  width: 100%; /* for IE 6 */
+  box-shadow: 0px 6px 14px #333;
+  /*box-shadow: 3px 3px 4px #000;*/
+  /*-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#333')"; *//* For IE 8 */
+  /*filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#333'); *//* For IE 5.5 - 7 */
+  form {
+    border: 1px #4955DA ridge;
+    -moz-box-shadow: 2px 2px 5px #4955DA;
+    -webkit-box-shadow: 2px 2px 5px #4955DA;
+    box-shadow: 2px 2px 5px #4955DA;
+  }
+}
+
+#banner_slider{
+  .item img{
+    width: 100%;
+  }
+}
+
+#activity_search_form {
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  z-index: 200;
+
+  form {
+    width: 30%;
+    margin: 0 auto;
+    overflow: hidden;
+    font-size: 1em;
+    input[type='text'] {
+      float: left;
+    }
+    .email-wrapper {
+      margin-left: 1em;
+      float: left;
+      // TODO Temporal. To be deleted!!!
+      font: 1.6em/1.3em  'OswaldBook', 'Helvetica', 'sans-serif';
+      color: $fontColor;
+      text-align: center;
+    }
+    input[type='submit'] {
+      float: right;
+    }
+  }
+}
+
+.box {
+  padding: 4% 4% 0 4%;
+  border: 1px solid #AAA;
+  background: url('welcome/bg_spaces.png') repeat;
+  -moz-box-shadow: 1px 1px 5px #AAA;
+  -webkit-box-shadow: 1px 1px 5px #AAA;
+  box-shadow: 1px 1px 5px #AAA;
+  a:not(.image) {
+    font: 1.75em/1em 'OswaldBook', 'Helvetica', 'sans-serif';
+    display: inline-block;
+    margin: 0.5em 0;
+  }
+  a.image {
+    width: 100%
+  }
+  img {
+    width: 100%;
+    opacity: 1;
+    transition: opacity 1s;
+    -moz-transition: opacity 1s; /* Firefox 4 */
+    -webkit-transition: opacity 1s; /* Safari and Chrome */
+    -o-transition: opacity 1s; /* Opera */
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+  p {
+    margin-top: 0;
+  }
+}
+
+.navbar {
+  .navbar-inner {
+    background: #FFFFF5;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+footer {
+  width: 100%;
+  background-image: url('welcome/footer_top.png') , url('welcome/bg_footer.png');
+  background-repeat: repeat-x, repeat;
+  background-position: center top, center center;
+  padding-top: 160px;
+  padding-bottom: 1.5em;
+  ul {
+    margin: 0;
+    color: #FFFFF5;
+    font-size: 1.2em;
+    li {
+      line-height: 1.4em;
+    }
+  }
+  .partners, .recognition {
+    text-align: center;
+    li:nth-child(3) {
+      margin-bottom: 3%;
+    }
+    li a:nth-child(even) {
+    margin-left: 5%;
+  }
+  }
+}
+
+header {
+  background: #FFFFF5;
+  border-bottom: 5px #4955DA solid;
+}
+
+.navbar .nav > li > a {
+  margin: 36px 0;
+  font-size: 1.2em;
+}
+
+.navbar .nav > li > a.logout{
+  font-size: 1.0em;
+  color: $logoutInLinkColor;
+  &:hover{
+    color: $logoutInLinkColorHover;
+  }
+}
+
+.navbar .nav > li > a.logged_in{
+  font-size: 1.0em;
+  color: $loggedInLinkColor;
+  &:hover{
+    color: $loggedInLinkColorHover;
+  }
+}
+
+textarea:focus, textarea:focus, input[type="text"]:focus, input[type="password"]:focus,
+input[type="email"]:focus, input[type="tel"]:focus {
+  border-color: rgba(73, 85, 218, 0.8);
+  -webkit-box-shadow: inset 0 1px 1px rgba(73, 85, 218, 0.075), 0 0 8px rgba(123, 129, 214, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(73, 85, 218, 0.075), 0 0 8px rgba(123, 129, 214, 0.6);
+  box-shadow: inset 0 1px 1px rgba(73, 85, 218, 0.075), 0 0 8px rgba(123, 129, 214, 0.6);
+}
+
+#contact-form input {
+  display: block;
+}
+
+#espacios-eventos, #compartir-espacio {
+  margin: 1em 0;
+}
+
+#compartir-espacio {
+  h2 {
+    text-align: center;
+  }
+}
+
+i.name, i.email, i.cell, i.phone, i.pin, i.facebook, i.twitter {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  vertical-align: baseline;
+  background-repeat: no-repeat;
+}
+
+i.name { background-image: url(name16.png); }
+i.email { background-image: url(email16.png); }
+i.cell { background-image: url(cell16.png); }
+i.phone { background-image: url(phone16.png); }
+i.pin { background-image: url(pin16.png); }
+i.facebook { background-image: url(facebook16.png); }
+i.twitter { background-image: url(twitter16.png); }
+
+.label-check {
+  margin-bottom: 1em;
+  label {
+    display: inline-block;
+    text-indent: 0.5em;
+  }
+}
+
+#spaces, #events {
+  margin: 2em auto;
+  .row-fluid {
+    margin-bottom: 1.5em;
+  }
+  .item-box {
+    position: relative;
+    border: 2px solid #CCC;
+    -moz-box-shadow: 2px 2px 5px #CCC;
+    -webkit-box-shadow: 2px 2px 5px #CCC;
+    box-shadow: 2px 2px 5px #CCC;
+    font-family: 'OswaldBook', 'Verdana', 'sans';
+    transition: all 0.5s;
+    -moz-transition: all 0.5s; /* Firefox 4 */
+    -webkit-transition: all 0.5s; /* Safari and Chrome */
+    -o-transition: all 0.5s; /* Opera */
+    &:hover {
+      border: 2px solid $linkColor;
+      -moz-box-shadow: 2px 2px 5px $linkColor;
+      -webkit-box-shadow: 2px 2px 5px $linkColor;
+      box-shadow: 2px 2px 5px $linkColor;
+    }
+  }
+}
+
+label.checkbox {
+  font-size: 0.8em;
+}
+
+.centered {
+  text-align: center;
+}
+
+#promociones {
+  margin-bottom: 1em;
+}
+.promo-box {
+  border: 1px solid #CCC;
+  -moz-box-shadow: 1px 1px 5px #CCC;
+  -webkit-box-shadow: 1px 1px 5px #CCC;
+  box-shadow: 1px 1px 5px #CCC;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-family: 'OswaldBook', 'Verdana', 'sans';
+  .promo-image {
+    position: relative;
+    &:hover {
+      .promo-overlay {
+        opacity: 0;
+      }
+    }
+    img {
+      width: 100%;
+      max-width: 314px;
+      max-height: 196px;
+      -moz-border-radius: 5px 5px 0px 0px;
+      -webkit-border-radius: 5px 5px 0px 0px;
+      border-radius: 5px 5px 0px 0px;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+  p.description {
+    margin: 0.2em 0.4em;
+    font-size: 1em;
+  }
+  .promo-price {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    div {
+      text-align: center;
+    }
+    .discount, .price {
+      padding: 0.5em;
+      display: block;
+    }
+    .discount {
+      float: left;
+      position: absolute;
+      left: 0;
+      height: 100%;
+      width: 30%;
+      background: red;
+      color: $yellowColor;
+      label {
+        font-size: 1em;
+        font-family: 'Verdana';
+        margin-bottom: 15px;
+      }
+      span {
+        font-size: 2.5em;
+      }
+    }
+    .price {
+      width: 60%;
+      float: right;
+      ul {
+        margin: 0 0 0 2em;
+        li:first-child {
+          span.number {
+            font: 1.2em/1em 'OswaldBook';
+          }
+        }
+        li.button {
+          font-family: 'Verdana', 'Arial', 'sans';
+        }
+      }
+      span {
+        font-size: 1em;
+        font-family: 'Verdana';
+      }
+    }
+  }
+}
+
+.promo-overlay, .item-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #000;
+  width: 100%;
+  opacity: 0.85;
+  transition: opacity 1s;
+  -moz-transition: opacity 1s; /* Firefox 4 */
+  -webkit-transition: opacity 1s; /* Safari and Chrome */
+  -o-transition: opacity 1s; /* Opera */
+  h3 {
+    font-size: 1.1em;
+    line-height: 1.2em;
+    margin: 0.5em 0.5em 0.1em 0.4em;
+    color: #4BB833;
+  }
+  p {
+    margin: 0 0.5em 0.5em 0.5em;
+    color: #FFFFF5;
+    font-size: 1em;
+  }
+}
+
+.promo-type, .item-category {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #000;
+  padding: 1% 2%;
+  h4 {
+    font-family: 'Arial', 'sans', 'Verdana';
+    color: $yellowColor;
+    text-shadow: 1px 1px 1px #000;
+    filter: dropshadow(color=#000000, offx=1, offy=1);
+  }
+}
+
+#modal_newsletter_email_box{
+  width: 500px;
+}
+
+#contacto {
+  margin:  0;
+  li {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    }
+}
+
+.promo {
+  margin-bottom: 2em;
+}
+
+#more-promos {
+  float: right;
+  font-family: OswaldBook;
+  font-size: 1.2em;
+}
+
+@media all and (max-width: 1100px) {
+  #activity_search_form {
+    font-size: 0.8em;
+    form {
+      width: 40%;
+    }
+  }
+}
+
+@media all and (max-width: 940px) {
+  .navbar .nav > li > a {
+    margin: 0;
+    font-weight: normal;
+    &:hover {
+      background: #ccc;
+    }
+  }
+}
+
+#slogan {
+  color: $fontColor;
+  font-size: 1.3em;
+  line-height: 1.2em;
+}
+
+.logo {
+  float: left;
+}

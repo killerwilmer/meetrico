@@ -1,0 +1,6 @@
+<h2>Estado de cupos para la actividad: <%= link_to @activity.name, @activity %> </h2>
+<%= render :partial => 'tables' %>
+
+<p>
+<%= link_to "Nueva actividad", new_activity_path %>&nbsp;|&nbsp;<%= link_to "Ver actividad", @activity %>
+</p>

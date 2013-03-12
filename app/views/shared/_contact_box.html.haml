@@ -1,0 +1,15 @@
+#modal_newsletter_email_box.modal.hide.fade
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"} ×
+    %h3= t(:want_to_know_more)
+    = form_for contact_message, :html => { :id => 'contact-form' } do |f|
+      .modal-body
+        %p= t(:give_us_your_email_to_receive_this_promo)
+        = f.text_field :name, :placeholder => t(:nombre_placeholder)
+        = f.email_field :email, :placeholder => t(:email_placeholder)
+        = f.hidden_field :item_category_id
+        = f.hidden_field :url
+      .modal-footer
+        %span{class: 'pull-left'}= t(:que_es_esto)
+        = link_to t(:conoce_meetrico), about_path, class: 'pull-left'
+        = f.submit t(:accept), { :class => 'btn btn-success pull-right' }
